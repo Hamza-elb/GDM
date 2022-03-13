@@ -1,10 +1,11 @@
-<?php 
+<?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pfas;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PfaController extends Controller 
+class PfaController extends Controller
 {
 
   /**
@@ -14,7 +15,7 @@ class PfaController extends Controller
    */
   public function index()
   {
-    
+    return view('Pages.Pfas.PfaList');
   }
 
   /**
@@ -24,7 +25,7 @@ class PfaController extends Controller
    */
   public function create()
   {
-    
+
   }
 
   /**
@@ -34,7 +35,7 @@ class PfaController extends Controller
    */
   public function store(Request $request)
   {
-    
+
   }
 
   /**
@@ -45,7 +46,7 @@ class PfaController extends Controller
    */
   public function show($id)
   {
-    
+
   }
 
   /**
@@ -56,7 +57,7 @@ class PfaController extends Controller
    */
   public function edit($id)
   {
-    
+
   }
 
   /**
@@ -67,7 +68,7 @@ class PfaController extends Controller
    */
   public function update($id)
   {
-    
+
   }
 
   /**
@@ -78,9 +79,9 @@ class PfaController extends Controller
    */
   public function destroy($id)
   {
-    
+
   }
-  
+
 }
 
 ?>

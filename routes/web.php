@@ -25,5 +25,8 @@ Route::group(
     {
         return View ('dashboard');
     });
-    Route::resource('pfa', 'PfaController');
+    Route::group(['namespace'=>'Pfas'],function (){
+        Route::resource('Pfa', 'PfaController');
+
+    });
 });
