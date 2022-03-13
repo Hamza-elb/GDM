@@ -60,24 +60,11 @@
                                              data-target="#edit{{ $pfa->id }}"
                                              title="{{ trans('main_trans.Edit') }}"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#delete{{ $Grade->id }}"
-                                            title="{{ trans('Grades_trans.Delete') }}"><i
+                                            data-target="#delete{{$pfa->id }}"
+                                            title="{{ trans('main_trans.Delete') }}"><i
                                             class="fa fa-trash"></i></button></td>
 
-
-
-
-
-                            <tr>
-
-
-
-
-
-
-                            </tr>
-
-
+                            @endforeach
                         </table>
                     </div>
                 </div>
