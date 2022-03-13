@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pfas;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pfa;
 
 class PfaController extends Controller
 {
@@ -15,7 +16,8 @@ class PfaController extends Controller
    */
   public function index()
   {
-    return view('Pages.Pfas.PfaList');
+      $pfas = Pfa::all();
+    return view('Pages.Pfas.PfaList', compact('pfas'));
   }
 
   /**
