@@ -25,4 +25,5 @@ Route::group(
     {
         return View ('dashboard');
     });
+    Route::resource('pfa', 'PfaController');
 });
