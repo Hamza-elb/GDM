@@ -16,17 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-    ], function(){ //...
-    Route::get('/', function()
-    {
+
+    Route::get('/', function(){
         return View ('dashboard');
     });
+
+
     Route::group(['namespace'=>'Pfas'],function (){
         Route::resource('Pfa', 'PfaController');
 
     });
-});
+

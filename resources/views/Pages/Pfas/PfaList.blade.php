@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{trans('main_trans.ListPfa')}}
+    Liste des Pfa
 @stop
 @endsection
 @section('page-header')
@@ -10,7 +10,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">{{trans('main_trans.ListPfa')}}</h4>
+            <h4 class="mb-0">La liste des projets de fin d'année</h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
@@ -32,13 +32,13 @@
                         <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead>
                             <tr>
-                                <th>{{trans('main_trans.Titre')}}</th>
-                                <th>{{trans('main_trans.Specialite')}}</th>
-                                <th>{{trans('main_trans.RealisePar')}}</th>
-                                <th>{{trans('main_trans.Encadrant')}}</th>
-                                <th>{{trans('main_trans.MotsCle')}}</th>
-                                <th>{{trans('main_trans.Resume')}}</th>
-                                <th>{{trans('main_trans.Operation')}}</th>
+                                <th>Titre</th>
+                                <th>Spécialite</th>
+                                <th>Réalisé Par</th>
+                                <th>Encadré Par </th>
+                                <th>Mots Clé</th>
+                                <th>Résumé</th>
+                                <th>Opération</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,14 +54,14 @@
                                 <td>{{$pfa->Encadre_par}}</td>
                                 <td>{{$pfa->Mots_cle}}</td>
                                 <td>
-                                    <a href="#" type="button" class="btn btn-warning btn-sm">{{trans('main_trans.Resume')}}</a>
+                                    <a href="#" type="button" class="btn btn-warning btn-sm">Résumé</a>
                                 </td>
                                 <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                              data-target="#edit{{ $pfa->id }}"
-                                             title="{{ trans('main_trans.Edit') }}"><i class="fa fa-edit"></i></button>
+                                             title="Editer"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#delete{{$pfa->id }}"
-                                            title="{{ trans('main_trans.Delete') }}"><i
+                                            title="Supprimer"><i
                                             class="fa fa-trash"></i></button></td>
 
                             @endforeach
