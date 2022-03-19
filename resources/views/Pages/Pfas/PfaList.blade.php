@@ -29,7 +29,7 @@
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <button type="button" class="button x-small m-2" >Ajouter Pfa</button>
+                    <button type="button" class="button x-small m-2" data-toggle="modal" data-target="#exampleModal" >Ajouter Pfa</button>
                     <br/>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
@@ -71,6 +71,65 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- add_modal_Grade -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                       Ajouter un PFA
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- add_form -->
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <label for="titre" class="mr-sm-2">Titre
+                                    :</label>
+                                <input id="titre" type="text" name="titre" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="spécialité" class="mr-sm-2">Spécialité
+                                    :</label>
+                                <input type="text" class="form-control" name="spécialité">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
+                                    :</label>
+                                <input id="réalisé-Par" type="text" name="réalisé-Par" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label for="spécialité" class="mr-sm-2">Encadré-Par
+                                    :</label>
+                                <input type="text" class="form-control" name="Name_en">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="résumé">Résumé
+                                :</label>
+                            <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                                      rows="3"></textarea>
+                        </div>
+                        <br><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
+                    <button type="submit" class="btn btn-success">{{ trans('Grades_trans.submit') }}</button>
+                </div>
+                </form>
+
             </div>
         </div>
     </div>
