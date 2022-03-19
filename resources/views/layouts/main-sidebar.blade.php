@@ -7,7 +7,7 @@
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Tableau de bord</span>
                             </div>
                             <div class="clearfix"></div>
                         </a>
@@ -51,7 +51,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="chart-js.html">Liste des Pfe</a> </li>
+                            <li> <a href="#">Liste des Pfe</a> </li>
 
                         </ul>
                     </li>
