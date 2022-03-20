@@ -89,7 +89,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- add_form -->
-                    <form action="" method="POST">
+                    <form action="{{route('Pfas.store')}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -116,6 +116,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="résumé">Mots Clés
+                                :</label>
+                            <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                                      rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="résumé">Résumé
                                 :</label>
                             <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
@@ -125,8 +131,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
-                    <button type="submit" class="btn btn-success">{{ trans('Grades_trans.submit') }}</button>
+                            data-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-success">Ajouter</button>
                 </div>
                 </form>
 
