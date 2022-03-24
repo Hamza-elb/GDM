@@ -24,7 +24,7 @@ class StorePfas extends FormRequest
     public function rules()
     {
         return [
-            //
+            'titre' => 'required'
         ];
     }
 }

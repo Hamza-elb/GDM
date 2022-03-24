@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pfas;
 
+use App\Http\Requests\StorePfas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pfa;
@@ -35,9 +36,9 @@ class PfaController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(StorePfas $request)
   {
-
+      $validated = $request->validated();
   }
 
   /**

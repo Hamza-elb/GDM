@@ -26,6 +26,18 @@
 
     <!-- main body -->
     <div class="row">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
@@ -89,42 +101,42 @@
                 </div>
                 <div class="modal-body">
                     <!-- add_form -->
-                    <form action="{{route('Pfas.store')}}" method="POST">
+                    <form action="#" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col">
                                 <label for="titre" class="mr-sm-2">Titre
                                     :</label>
-                                <input id="titre" type="text" name="titre" class="form-control">
+                                <input id="titre" type="text" name="Titre" class="form-control" required>
                             </div>
                             <div class="col">
                                 <label for="spécialité" class="mr-sm-2">Spécialité
                                     :</label>
-                                <input type="text" class="form-control" name="spécialité">
+                                <input type="text" class="form-control" name="Specialite" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
                                     :</label>
-                                <input id="réalisé-Par" type="text" name="réalisé-Par" class="form-control">
+                                <input id="réalisé-Par" type="text" name="Realise_par" class="form-control" required>
                             </div>
                             <div class="col">
                                 <label for="spécialité" class="mr-sm-2">Encadré-Par
                                     :</label>
-                                <input type="text" class="form-control" name="Name_en">
+                                <input type="text" class="form-control" name="Encadre_par" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="résumé">Mots Clés
                                 :</label>
-                            <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                            <textarea class="form-control" name="Mots_cle" id="exampleFormControlTextarea1"
                                       rows="3"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="résumé">Résumé
                                 :</label>
-                            <textarea class="form-control" name="Notes" id="exampleFormControlTextarea1"
+                            <textarea class="form-control" name="Resume" id="exampleFormControlTextarea1"
                                       rows="3"></textarea>
                         </div>
                         <br><br>
