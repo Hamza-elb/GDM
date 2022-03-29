@@ -38,18 +38,29 @@ class PfaController extends Controller
    */
   public function store(Request $request)
   {
-      //$validated = $request->validated();
 
-      $pfas = new Pfa();
+      try {
+          $pfas = new Pfa();
 
-      $pfas->Titre = $request->Titre;
-      $pfas->Specialite = $request->Specialite;
-      $pfas->Realise_par = $request->Realise_par;
-      $pfas->Encadre_par = $request->Encadre_par;
-      $pfas->Mots_cle = $request->Mots_cle;
-      $pfas->Resume = $request->Resume;
+          $pfas->Titre = $request->Titre;
+          $pfas->Specialite = $request->Specialite;
+          $pfas->Realise_par = $request->Realise_par;
+          $pfas->Encadre_par = $request->Encadre_par;
+          $pfas->Mots_cle = $request->Mots_cle;
+          $pfas->Resume = $request->Resume;
 
-      $pfas->save();
+          $pfas->save();
+
+          toastr()->success('Les données ont été enregistrées avec succès');
+
+          return redirect()->route('Pfa.index');
+
+
+      }catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
+
+
 
 
   }

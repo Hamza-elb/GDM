@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-
+    @toastr_css
 @section('title')
     Liste des Pfa
 @stop
@@ -53,7 +53,9 @@
                             $i=0;
                             ?>
                             @foreach($pfas as $pfa)
+                                <tr>
                                 <?php $i++;  ?>
+
                                 <td>{{$pfa->Titre}}</td>
                                 <td>{{$pfa->Specialite}}</td>
                                 <td>{{$pfa->Realise_par}}</td>
@@ -68,8 +70,9 @@
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                             data-target="#delete{{$pfa->id }}"
                                             title="Supprimer"><i
-                                            class="fa fa-trash"></i></button></td>
-
+                                            class="fa fa-trash"></i></button>
+                                </td>
+                                </tr>
                             @endforeach
                         </table>
                     </div>
@@ -145,5 +148,6 @@
     <!-- row closed -->
 @endsection
 @section('js')
-
+    @toastr_js
+    @toastr_render
 @endsection
