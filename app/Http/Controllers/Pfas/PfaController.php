@@ -36,9 +36,22 @@ class PfaController extends Controller
    *
    * @return Response
    */
-  public function store(StorePfas $request)
+  public function store(Request $request)
   {
-      $validated = $request->validated();
+      //$validated = $request->validated();
+
+      $pfas = new Pfa();
+
+      $pfas->Titre = $request->Titre;
+      $pfas->Specialite = $request->Specialite;
+      $pfas->Realise_par = $request->Realise_par;
+      $pfas->Encadre_par = $request->Encadre_par;
+      $pfas->Mots_cle = $request->Mots_cle;
+      $pfas->Resume = $request->Resume;
+
+      $pfas->save();
+
+
   }
 
   /**
