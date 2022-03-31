@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Route;
     });
 
 
+//==============================dashboard============================
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+
     Route::group(['namespace'=>'Pfas'],function (){
         Route::resource('Pfa', 'PfaController');
 
