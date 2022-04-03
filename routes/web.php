@@ -31,6 +31,12 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
         Route::get('/resume', 'PfaController@resumer')->name('resume');
 
     });
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 
