@@ -62,7 +62,7 @@
                                 <td>{{$pfa->Encadre_par}}</td>
                                 <td>{{$pfa->Mots_cle}}</td>
                                 <td>
-                                    <a href="#" type="button" class="btn btn-warning btn-sm">Résumé</a>
+                                    <a href="{{ url('/resume') }}" type="button" class="btn btn-warning btn-sm">Résumé</a>
                                 </td>
                                 <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                              data-target="#edit{{ $pfa->id }}"

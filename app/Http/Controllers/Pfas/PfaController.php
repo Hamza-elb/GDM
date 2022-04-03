@@ -109,6 +109,15 @@ class PfaController extends Controller
 
   }
 
+
+    public function resumer()
+    {
+        return view('Pages.Pfas.resumer');
+    }
+
+
 }
+
+
 
 ?>
