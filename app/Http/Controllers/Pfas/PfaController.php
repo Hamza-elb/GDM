@@ -21,6 +21,15 @@ class PfaController extends Controller
     return view('Pages.Pfas.PfaList', compact('pfas'));
   }
 
+
+  public function afficherOne($id)
+  {
+
+        $pfa = Pfa::find($id);
+      return view('Pages.Pfas.resumer', compact('pfa'));
+
+  }
+
   /**
    * Show the form for creating a new resource.
    *
@@ -93,8 +102,26 @@ class PfaController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request)
   {
+      try {
+
+          $pfas=Pfa::findOrFail($request->id);
+          $pfas->update([  $pfas->Titre = $request->Titre,
+          $pfas->Specialite = $request->Specialite,
+          $pfas->Realise_par = $request->Realise_par,
+          $pfas->Encadre_par = $request->Encadre_par,
+          $pfas->Mots_cle = $request->Mots_cle,
+          $pfas->Resume = $request->Resume]);
+
+          toastr()->success('Les données ont été modifiées avec succès');
+
+          return redirect()->route('Pfa.index');
+
+
+      }catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
 
   }
 
@@ -104,16 +131,17 @@ class PfaController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
+      $pfas=Pfa::findOrFail($request->id)->delete();
+      toastr()->error('Les données ont été supprimées avec succès');
+
+      return redirect()->route('Pfa.index');
 
   }
 
 
-    public function resumer()
-    {
-        return view('Pages.Pfas.resumer');
-    }
+
 
 
 }

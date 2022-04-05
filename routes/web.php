@@ -28,7 +28,7 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
     Route::group(['namespace'=>'Pfas'],function (){
         Route::resource('Pfa', 'PfaController');
-        Route::get('/resume', 'PfaController@resumer')->name('resume');
+        Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
 
     });
 Auth::routes();
