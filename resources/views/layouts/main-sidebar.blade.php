@@ -2,9 +2,8 @@
     <div class="row">
         <!-- Left Sidebar start-->
         <div class="side-menu-fixed">
-            <div class="scrollbar side-menu-bg">
+            <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
-                    <!-- menu item Dashboard-->
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="{{ url('/dashboard') }}">
