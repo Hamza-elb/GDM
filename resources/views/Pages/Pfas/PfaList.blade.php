@@ -7,28 +7,21 @@
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
-<div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">La liste des projets de fin d'année</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
-                <li class="breadcrumb-item active">Page Title</li>
-            </ol>
-        </div>
-    </div>
-</div>
+@section('PageTitle')
+    <h4 class="mb-0">La liste des projets de fin d'année</h4>
+    <br/>
+@stop
 <!-- breadcrumb -->
 @endsection
 @section('content')
 
     <!-- main body -->
-    <div class="row">
+    <div class="row col-md-10">
+
+
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
-                <div class="card-body">
+                <div class="card-body ">
                     <button type="button" class="button x-small m-2" data-toggle="modal" data-target="#exampleModal" >Ajouter Pfa</button>
                     <br/>
                     <div class="table-responsive">
@@ -185,7 +178,9 @@
                 </div>
             </div>
         </div>
-    </div>
+
+
+
     <!-- add_modal_Grade -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -251,6 +246,12 @@
             </div>
         </div>
     </div>
+
+    </div>
+
+
+
+
     <!-- row closed -->
 @endsection
 @section('js')

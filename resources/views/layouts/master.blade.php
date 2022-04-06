@@ -32,7 +32,6 @@ preloader -->
  Main content -->
     <!-- main-content -->
     <div class="content-wrapper">
-
         @yield('page-header')
         <div class="page-title">
             <div class="row">
@@ -53,8 +52,7 @@ preloader -->
             @include('layouts.footer')
         </div><!-- main content wrapper end-->
     </div>
-</div>
-</div>
+
 
 <!--=================================
 footer -->
