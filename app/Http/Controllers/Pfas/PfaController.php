@@ -51,11 +51,11 @@ class PfaController extends Controller
       try {
           $pfas = new Pfa();
 
-          $pfas->Titre = $request->Titre;
-          $pfas->Specialite = $request->Specialite;
-          $pfas->Realise_par = $request->Realise_par;
-          $pfas->Encadre_par = $request->Encadre_par;
-          $pfas->Mots_cle = $request->Mots_cle;
+          $pfas->Titre = ucfirst($request->Titre);
+          $pfas->Specialite = ucwords($request->Specialite);
+          $pfas->Realise_par = ucwords($request->Realise_par);
+          $pfas->Encadre_par = ucwords($request->Encadre_par);
+          $pfas->Mots_cle =ucwords( implode(" ",multiexplode(array(",",".","|",":","-"," ",";") ,$request->Mots_cle)));
           $pfas->Resume = $request->Resume;
 
           $pfas->save();
@@ -145,7 +145,12 @@ class PfaController extends Controller
 
 
 }
+function multiexplode ($delimiters,$string) {
 
+    $ready = str_replace($delimiters, $delimiters[0], $string);
+    $launch = explode($delimiters[0], $ready);
+    return  $launch;
+}
 
 
 ?>
