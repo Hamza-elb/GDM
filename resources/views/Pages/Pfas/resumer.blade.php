@@ -12,12 +12,7 @@
         <div class="col-sm-6">
             <h4 class="mb-0"> Résumé de {{$pfa->Titre}} </h4>
         </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">Home</a></li>
-                <li class="breadcrumb-item active">Page Title</li>
-            </ol>
-        </div>
+<br><br>
     </div>
 </div>
 <!-- breadcrumb -->
@@ -29,7 +24,7 @@
         <div class="card card-statistics h-100">
             <div class="card-body m-2">
 
-                <h2 style="text-align: center"> Sujet : <br>
+                <h2 style="text-align: center;font-family: sans-serif"> Sujet : <br>
 
                     {{$pfa->Titre}}
                 </h2>
