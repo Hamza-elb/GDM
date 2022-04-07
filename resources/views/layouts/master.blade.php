@@ -38,9 +38,7 @@ preloader -->
                 <div class="col-sm-6">
                     <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">@yield('PageTitle')</h4>
                 </div>
-
-            </div>
-
+                </div>
         @yield('content')
 
         <!--=================================
@@ -52,6 +50,9 @@ preloader -->
             @include('layouts.footer')
         </div><!-- main content wrapper end-->
     </div>
+</div>
+</div>
+
 
 
 <!--=================================
