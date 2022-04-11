@@ -14,26 +14,41 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
-
-    Route::get('/', function(){
-        return View ('dashboard');
-    });
-
-
-//==============================dashboard============================
-Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
-
-
-    Route::group(['namespace'=>'Pfas'],function (){
-        Route::resource('Pfa', 'PfaController');
-        Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
-
-    });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'middleware' => ['guest']
+],function (){
+    Route::get('/', function(){
+        return View ('auth.login');
+    });
+
+});
+
+
+
+    Route::group(
+        [
+            'middleware' => ['auth']
+        ], function (){
+
+      Route::get('/dashboard','HomeController@index')->name('dashboard');
+
+            Route::group([
+                'namespace' => 'Pfas'
+            ],function (){
+                Route::resource('Pfa', 'PfaController');
+                Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+            });
+
+
+
+    });
+
+
+
+
+
 
 
 

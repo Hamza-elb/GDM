@@ -90,8 +90,8 @@ login-->
                             </div>
                             <div class="section-field">
                                 <div class="remember-checkbox mb-30">
-                                    <input type="checkbox" class="form-control" name="two" id="two" />
-                                    <label for="two"> remember me</label>
+
+                                    <a href="/register" class="float-left" >register</a>
                                     <a href="#" class="float-right">? Mot de passe oublié</a>
                                 </div>
                             </div>
