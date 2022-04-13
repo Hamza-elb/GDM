@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Pfas;
 
 use App\Http\Requests\StorePfas;
+use App\Models\Rapport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pfa;
+use Illuminate\Http\UploadedFile;
 
 class PfaController extends Controller
 {
+
+
 
   /**
    * Display a listing of the resource.
@@ -40,11 +44,13 @@ class PfaController extends Controller
 
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Request $request
+     * @param $pdfs
+     * @return Response
+     */
   public function store(Request $request)
   {
 
@@ -58,7 +64,22 @@ class PfaController extends Controller
           $pfas->Mots_cle =ucwords( implode(" ",multiexplode(array(",",".","|",":","-"," ",";") ,$request->Mots_cle)));
           $pfas->Resume = $request->Resume;
 
+
+
+
+          if($request->hasFile('pdf')){
+              foreach ($request->file('pdf') as $p){
+
+                  $p->storeAs($request->Titre, $p->getClientOriginalName(), $disk =  'Rapports' );
+                  Rapport::create([
+                      'file_name' => $p->getClientOriginalName(),
+                      'pfa_id' => Pfa::latest()->first()->id,
+                  ]);
+              }
+          }
+
           $pfas->save();
+          
 
           toastr()->success('Les données ont été enregistrées avec succès');
 

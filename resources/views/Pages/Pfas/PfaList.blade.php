@@ -55,7 +55,7 @@
                                     <td>{{$pfa->Mots_cle}}</td>
                                     <td>
                                         <a href="{{ url('/resume/'.$pfa->id) }}" type="button"
-                                           class="btn btn-warning btn-sm" ">Résumé</a>
+                                           class="btn btn-warning btn-sm" >Résumé</a>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -136,6 +136,7 @@
                                                                   id="exampleFormControlTextarea1"
                                                                   rows="3">{{$pfa->Resume}}</textarea>
                                                     </div>
+
                                                     <br><br>
 
 
@@ -250,6 +251,13 @@
                                     :</label>
                                 <textarea class="form-control" name="Resume" id="exampleFormControlTextarea1"
                                           rows="3"></textarea>
+                            </div>
+                            <br/>
+                            <div class="form-group">
+                                <label for="résumé">Téléverser un fichier
+                                    :</label>
+                                <br>
+                            <input  type="file" name="pdf" accept="application/pdf"  multiple >
                             </div>
                             <br><br>
                     </div>
