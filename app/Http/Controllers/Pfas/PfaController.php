@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pfa;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class PfaController extends Controller
 {
@@ -63,23 +64,35 @@ class PfaController extends Controller
           $pfas->Encadre_par = ucwords($request->Encadre_par);
           $pfas->Mots_cle =ucwords( implode(" ",multiexplode(array(",",".","|",":","-"," ",";") ,$request->Mots_cle)));
           $pfas->Resume = $request->Resume;
-
-
-
-
-          if($request->hasFile('pdf')){
-              foreach ($request->file('pdf') as $p){
-
-                  $p->storeAs($request->Titre, $p->getClientOriginalName(), $disk =  'Rapports' );
-                  Rapport::create([
-                      'file_name' => $p->getClientOriginalName(),
-                      'pfa_id' => Pfa::latest()->first()->id,
-                  ]);
-              }
-          }
-
           $pfas->save();
-          
+
+            $fileName =null;
+            if($request->hasFile('files')){
+                $pdfFile = $request->file('files');
+                $fileName = $pdfFile->getClientOriginalName();
+                Storage::putFileAs('public/PFA',$pdfFile, $fileName);
+            }
+
+            Rapport::create([
+                'file_name' => $fileName,
+                 'pfa_id' => Pfa::latest()->first()->id,
+
+            ]);
+
+//
+//          if($request->hasFile('pdf')){
+//              foreach ($request->file('pdf') as $p){
+//
+//                  $p->storeAs($request->Titre, $p->getClientOriginalName(), $disk =  'Rapports' );
+//                  Rapport::create([
+//                      'file_name' => $p->getClientOriginalName(),
+//                      'pfa_id' => Pfa::latest()->first()->id,
+//                  ]);
+//              }
+//          }
+
+
+
 
           toastr()->success('Les données ont été enregistrées avec succès');
 

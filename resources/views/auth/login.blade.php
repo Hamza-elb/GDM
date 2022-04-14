@@ -91,7 +91,7 @@ login-->
                             <div class="section-field">
                                 <div class="remember-checkbox mb-30">
 
-                                    <a href="/register" class="float-left" >register</a>
+                                    <a href="/register" class="float-left" >Register</a>
                                     <a href="#" class="float-right">? Mot de passe oublié</a>
                                 </div>
                             </div>

@@ -213,7 +213,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- add_form -->
-                        <form action="{{ route('Pfa.store') }}" method="POST">
+                        <form action="{{ route('Pfa.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col">
@@ -253,20 +253,24 @@
                                           rows="3"></textarea>
                             </div>
                             <br/>
+                            <!--input file -->
                             <div class="form-group">
+
                                 <label for="résumé">Téléverser un fichier
                                     :</label>
                                 <br>
-                            <input  type="file" name="pdf" accept="application/pdf"  multiple >
+                                <input  type="file" name="files" accept="application/pdf"   >
                             </div>
+                            <!--end input file-->
                             <br><br>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">Fermer
                         </button>
-                        <button type="submit" class="btn btn-success">Ajouter</button>
+                        <button type="submit" class="btn btn-success" >Ajouter</button>
                     </div>
+
                     </form>
 
                 </div>
@@ -281,6 +285,7 @@
     <!-- row closed -->
 @endsection
 @section('js')
+    @livewireScripts
     @toastr_js
     @toastr_render
 @endsection
