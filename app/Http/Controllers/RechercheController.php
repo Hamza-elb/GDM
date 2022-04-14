@@ -39,12 +39,12 @@ class RechercheController extends Controller
     {
 
         $pfa=Pfa::where('Titre','like',"%{$request->Titre}%")
-            ->orWhere('Specialite','like',"%{$request->Specialite}%")
-            ->orWhere('Realise_par','like',"%{$request->Realise_par}%")
-            ->orWhere('Encadre_par	','like',"%{$request->Encadre_par}%")
-            ->orWhere('Mots_cle	','like',"%{$request->Mots_cle}%")
+            ->Where('Specialite','like',"%{$request->Specialite}%")
+            ->Where('Realise_par','like',"%{$request->Realise_par}%")
+            ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+            ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
             ->get();
-        return redirect()->route('Pfa.index')->with('pfa',$pfa);
+        return view('Pages.Recherche',compact('pfa'));
     }
 
     /**
