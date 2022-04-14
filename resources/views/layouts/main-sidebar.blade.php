@@ -54,6 +54,13 @@
 
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ route('search.index') }}">
+                            <div class="pull-left"><i class="ti-search"></i><span class="right-nav-text">recherche</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

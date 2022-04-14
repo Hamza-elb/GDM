@@ -33,6 +33,10 @@ Route::group([
         ], function (){
 
       Route::get('/dashboard','HomeController@index')->name('dashboard');
+      Route::resource('search', 'RechercheController');
+
+
+
 
             Route::group([
                 'namespace' => 'Pfas'
