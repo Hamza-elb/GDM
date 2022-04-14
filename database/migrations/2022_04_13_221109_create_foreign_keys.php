@@ -14,7 +14,7 @@ class CreateForeignKeys extends Migration
     public function up()
     {
         Schema::table('rapports', function(Blueprint $table) {
-            $table->foreign( 'pfa_id')->references('id')->on('pfas');
+            $table->foreign( 'pfa_id')->references('id')->on('pfas')->onDelete('cascade');
         });
     }
 
