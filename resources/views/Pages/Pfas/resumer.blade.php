@@ -24,44 +24,48 @@
         <div class="card card-statistics h-100">
             <div class="card-body m-2">
 
-                <h2 style="text-align: center;font-family: sans-serif"> Sujet : <br>
+                <p style="text-align: center;font-size: x-large; font-family: Georgia, serif;"> <b style="color: #011F26">Sujet : </b> <br>
 
-                    {{$pfa->Titre}}
-                </h2>
+                   <i style="color: #026873"> {{$pfa->Titre}}</i>
+                </p>
 
                 <br><br><br><br><br><br>
 
-                <h3 style="display: inline">
-                    Présenté par :
+                <p style="display: inline;font-size: large;font-family: Gill Sans, sans-serif;">
+                    <b style="color: #011F26">Présenté par : </b>
 
-                    {{$pfa->Realise_par}}
-                </h3>
+                    <span style="color: #011F26">{{$pfa->Realise_par}}</span>
+                </p>
 
 
-                <h3 style="float: right;display: inline">
-                    Encadré par :
+                <p style="display: inline;float: right;display: inline;font-size: large;font-family: Gill Sans, sans-serif;">
 
-                    {{$pfa->Encadre_par}}
+                    <b style="color: #011F26">Encadré par :</b>
 
-                 </h3>
+                    <span style="color: #011F26"> {{$pfa->Encadre_par}}</span>
+
+                 </p>
 
                 <br>
                 <br>
                 <br>
-                <h2 style="text-align: center"> Résumé : <br>  </h2>
+                <p style="text-align: center;font-size: x-large; font-family: Georgia, serif;">
+                    <b style="color: #026873">Résumé :</b> <br>  </p>
                 <br>
                 <br>
 
-                  <h6>{{$pfa->Resume}}</h6>
+                  <h6 style="font: 1.2em; font-family:  Fira Sans, sans-serif;">{{$pfa->Resume}}</h6>
                 <br>
                 <br>
                 <br><br>
                 <br>
                 <br>
 
-                <h4 >
-                    Mots clès : </h4>
-               <h6> {{$pfa->Mots_cle}}</h6>
+                <p style="font-size: large;font-family: Gill Sans, sans-serif; " >
+                   <b style="color: #011F26 "> Mots clès : </b>
+
+                </p>
+               <h6  style="color: #026873""> {{$pfa->Mots_cle}}</h6>
             </div>
         </div>
     </div>
