@@ -8,7 +8,7 @@ class CreateStagesTable extends Migration {
 	public function up()
 	{
 		Schema::create('Stages', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->timestamps();
 			$table->string('Titre', 100);
 			$table->string('Specialite', 100);

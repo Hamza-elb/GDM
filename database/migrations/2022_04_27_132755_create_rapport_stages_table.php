@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateForeignKeys extends Migration
+class CreateRapportStagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('rapports', function(Blueprint $table) {
-            $table->foreign( 'pfa_id')->references('id')->on('pfas')->onDelete('cascade');
+        Schema::create('rapport_stages', function (Blueprint $table) {
+            $table->id();
+            $table->string('file_name')->nullable();
+            $table->bigInteger('stage_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -25,7 +28,6 @@ class CreateForeignKeys extends Migration
      */
     public function down()
     {
-
+        Schema::dropIfExists('rapport_stages');
     }
-
 }
