@@ -42,6 +42,8 @@ Route::group([
                 'namespace' => 'Pfas'
             ],function (){
                 Route::resource('Pfa', 'PfaController');
+                Route::resource('stage', 'StageController');
+
                 Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
             });
 
