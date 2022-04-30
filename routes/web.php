@@ -42,9 +42,18 @@ Route::group([
                 'namespace' => 'Pfas'
             ],function (){
                 Route::resource('Pfa', 'PfaController');
-                Route::resource('stage', 'StageController');
-
                 Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+
+                //diri hadi f group
+                // Route::resource('stage', 'StageController');
+            });
+
+            Route::group([
+                'namespace' => 'Pfes'
+            ],function (){
+                Route::resource('Pfe', 'PfeController');
+               // Route::get('/resume/{id}', 'PfeController@afficherOne')->name('resume');
+                Route::get('Download_file/{titre}/{filename}','PfeController@DownloadFile')->name('Download_file');
             });
 
 

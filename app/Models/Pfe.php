@@ -1,13 +1,16 @@
 <?php
 
-namespace Pfe;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pfe extends Model 
+class Pfe extends Model
 {
 
-    protected $table = 'Pfes';
+    protected $fillable = ['Titre','Specialite','Realise_par','Encadre_par','Mots_cle','Resume'];
+    protected $table = 'pfes';
     public $timestamps = true;
+
+
 
 }

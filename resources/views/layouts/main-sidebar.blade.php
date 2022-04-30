@@ -41,7 +41,7 @@
                     </li>
 
 
-                    <!-- menu item Charts-->
+                    <!-- menu item PFE-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
                             <div class="pull-left"><i class="ti-pie-chart"></i><span
@@ -50,7 +50,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">Liste des Pfe</a> </li>
+                            <li> <a href="{{route('Pfe.index')}}">Liste des Pfe</a> </li>
 
                         </ul>
                     </li>

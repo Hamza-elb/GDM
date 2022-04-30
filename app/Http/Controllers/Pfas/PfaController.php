@@ -79,21 +79,6 @@ class PfaController extends Controller
 
             ]);
 
-//
-//          if($request->hasFile('pdf')){
-//              foreach ($request->file('pdf') as $p){
-//
-//                  $p->storeAs($request->Titre, $p->getClientOriginalName(), $disk =  'Rapports' );
-//                  Rapport::create([
-//                      'file_name' => $p->getClientOriginalName(),
-//                      'pfa_id' => Pfa::latest()->first()->id,
-//                  ]);
-//              }
-//          }
-
-
-
-
           toastr()->success('Les données ont été enregistrées avec succès');
 
           return redirect()->route('Pfa.index');
