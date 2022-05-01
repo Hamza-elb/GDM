@@ -55,6 +55,13 @@ Route::group([
                // Route::get('/resume/{id}', 'PfeController@afficherOne')->name('resume');
                 Route::get('Download_file/{titre}/{filename}','PfeController@DownloadFile')->name('Download_file');
             });
+        Route::group([
+            'namespace' => 'Stages'
+        ],function (){
+            Route::resource('Stage', 'StageController');
+             //Route::get('/resume/{id}', 'StageController@afficherOne')->name('resume');
+            //Route::get('Download_file/{titre}/{filename}','StageController@DownloadFile')->name('Download_file');
+        });
 
 
 

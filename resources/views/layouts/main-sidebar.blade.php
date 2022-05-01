@@ -35,7 +35,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="#">Liste des stages </a> </li>
+                            <li> <a href="{{route('Stage.index')}}">Liste des stages </a> </li>
 
                         </ul>
                     </li>
