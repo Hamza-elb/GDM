@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Stage;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use function App\Http\Controllers\Pfas\multiexplode;
 
@@ -23,14 +24,10 @@ class StageController extends Controller
 
   {
       $stages=Stage::all();
-      return view('Pages.Stages.Stages',compact('stages'));
+      $fl = RapportStage ::all();
+      return view('Pages.Stages.Stages',compact('stages','fl'));
 
   }
-    public function afficherOne($id)
-    {
-
-
-    }
 
   /**
    * Show the form for creating a new resource.
@@ -49,6 +46,7 @@ class StageController extends Controller
    */
     public function store(Request $request)
     {
+        DB::beginTransaction();
 
         try {
             $stage = new Stage();
@@ -63,9 +61,10 @@ class StageController extends Controller
 
             $fileName =null;
             if($request->hasFile('files')){
+                $titre = $request->Titre;
                 $pdfFile = $request->file('files');
                 $fileName = $pdfFile->getClientOriginalName();
-                Storage::putFileAs('public/Stage',$pdfFile, $fileName);
+                Storage::putFileAs('public/Stage/'.$titre,$pdfFile, $fileName);
             }
 
             RapportStage::create([
@@ -73,6 +72,7 @@ class StageController extends Controller
                 'stage_id' => Stage::latest()->first()->id,
 
             ]);
+            DB::commit(); // insert data
 
             toastr()->success('Les données ont été enregistrées avec succès');
 
@@ -80,6 +80,7 @@ class StageController extends Controller
 
 
         }catch (\Exception $e){
+            DB::rollback();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
 
@@ -150,6 +151,12 @@ class StageController extends Controller
    */
   public function destroy(Request $request)
   {
+      $filename = Stage::findOrFail($request->id);
+
+      $path = 'Stage/'.$filename->Titre;
+      Storage:: disk('public')->deleteDirectory($path);
+
+
       $stage=Stage::findOrFail($request->id)->delete();
       toastr()->error('Les données ont été supprimées avec succès');
 
@@ -158,7 +165,10 @@ class StageController extends Controller
   }
 
 
+    public function DownloadFile($titre,$filename){
 
+        return response()->download(storage_path('app/public/Stage/'.$titre.'/'.$filename));
+    }
 
 
 }

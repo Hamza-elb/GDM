@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pfa;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PfaController extends Controller
@@ -23,17 +24,18 @@ class PfaController extends Controller
   public function index()
   {
       $pfas = Pfa::all();
-    return view('Pages.Pfas.PfaList', compact('pfas'));
+      $fl = Rapport::all();
+    return view('Pages.Pfas.PfaList', compact('pfas','fl'));
   }
 
 
-  public function afficherOne($id)
-  {
-
-        $pfa = Pfa::find($id);
-      return view('Pages.Pfas.resumer', compact('pfa'));
-
-  }
+//  public function afficherOne($id)
+//  {
+//
+//        $pfa = Pfa::find($id);
+//      return view('Pages.Pfas.resumer', compact('pfa'));
+//
+//  }
 
   /**
    * Show the form for creating a new resource.
@@ -54,6 +56,7 @@ class PfaController extends Controller
      */
   public function store(Request $request)
   {
+      DB::beginTransaction();
 
       try {
           $pfas = new Pfa();
@@ -68,9 +71,10 @@ class PfaController extends Controller
 
             $fileName =null;
             if($request->hasFile('files')){
+                $titre = $request->Titre;
                 $pdfFile = $request->file('files');
                 $fileName = $pdfFile->getClientOriginalName();
-                Storage::putFileAs('public/PFA',$pdfFile, $fileName);
+                Storage::putFileAs('public/PFA/'.$titre,$pdfFile, $fileName);
             }
 
             Rapport::create([
@@ -78,6 +82,7 @@ class PfaController extends Controller
                  'pfa_id' => Pfa::latest()->first()->id,
 
             ]);
+          DB::commit(); // insert data
 
           toastr()->success('Les données ont été enregistrées avec succès');
 
@@ -85,6 +90,7 @@ class PfaController extends Controller
 
 
       }catch (\Exception $e){
+          DB::rollback();
           return redirect()->back()->withErrors(['error' => $e->getMessage()]);
       }
 
@@ -101,7 +107,8 @@ class PfaController extends Controller
    */
   public function show($id)
   {
-
+      $pfa = Pfa::find($id);
+      return view('Pages.Pfas.resumer', compact('pfa'));
   }
 
   /**
@@ -154,12 +161,22 @@ class PfaController extends Controller
    */
   public function destroy(Request $request)
   {
+      $filename = Pfa::findOrFail($request->id);
+      $path = 'PFA/'.$filename->Titre;
+      Storage:: disk('public')->deleteDirectory($path);
+
+
       $pfas=Pfa::findOrFail($request->id)->delete();
       toastr()->error('Les données ont été supprimées avec succès');
 
       return redirect()->route('Pfa.index');
 
   }
+
+    public function DownloadFile($titre,$filename){
+
+        return response()->download(storage_path('app/public/PFA/'.$titre.'/'.$filename));
+    }
 
 }
 

@@ -42,10 +42,9 @@ Route::group([
                 'namespace' => 'Pfas'
             ],function (){
                 Route::resource('Pfa', 'PfaController');
-                Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+               // Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+                Route::get('Download/{titre}/{filename}','PfaController@DownloadFile')->name('Download');
 
-                //diri hadi f group
-                // Route::resource('stage', 'StageController');
             });
 
             Route::group([
@@ -60,7 +59,7 @@ Route::group([
         ],function (){
             Route::resource('Stage', 'StageController');
              //Route::get('/resume/{id}', 'StageController@afficherOne')->name('resume');
-            //Route::get('Download_file/{titre}/{filename}','StageController@DownloadFile')->name('Download_file');
+            Route::get('Download_stage/{titre}/{filename}','StageController@DownloadFile')->name('Download_stage');
         });
 
 

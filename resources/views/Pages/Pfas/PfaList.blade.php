@@ -54,7 +54,7 @@
                                     <td>{{$pfa->Encadre_par}}</td>
                                     <td>{{$pfa->Mots_cle}}</td>
                                     <td>
-                                        <a href="{{ url('/resume/'.$pfa->id) }}" type="button"
+                                        <a href="{{ route('Pfa.show', $pfa->id) }}" type="button"
                                            class="btn btn-warning btn-sm" >Résumé</a>
                                     </td>
                                     <td>
@@ -65,6 +65,16 @@
                                                 data-target="#delete{{$pfa->id }}"
                                                 title="Supprimer"><i
                                                 class="fa fa-trash"></i></button>
+
+                                        <a class="btn btn-outline-info btn-sm"
+
+                                           @foreach($fl as $f)
+                                           @if($pfa->id == $f->pfa_id)
+
+                                           href="{{url('Download')}}/{{$pfa->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                            @endif
+                                            @endforeach
+                                        </a>
                                     </td>
                                 </tr>
 
@@ -85,7 +95,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- update -->
-                                                <form action="{{route('Pfa.update','test')}}" method="post">
+                                                <form action="{{route('Pfa.update','test')}}" method="post" enctype="multipart/form-data">
                                                     {{method_field('patch')}}
                                                     @csrf
                                                     <div class="row">
@@ -171,7 +181,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{route('Pfa.destroy','test')}}" method="post">
+                                                <form action="{{route('Pfa.destroy','test')}}" method="post" enctype="multipart/form-data">
                                                     {{method_field('Delete')}}
                                                     @csrf
                                                     êtes-vous sûr de vouloir supprimer ?
@@ -259,7 +269,7 @@
                                 <label for="résumé">Téléverser un fichier
                                     :</label>
                                 <br>
-                                <input  type="file" name="files" accept="application/pdf"   >
+                                <input  type="file" name="files" accept="application/pdf"  required >
                             </div>
                             <!--end input file-->
                             <br><br>

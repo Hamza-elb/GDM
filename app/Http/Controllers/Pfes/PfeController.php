@@ -7,6 +7,7 @@ use App\Models\Pfe;
 use App\Models\RapportPfe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -55,6 +56,7 @@ class PfeController extends Controller
    */
   public function store(Request $request)
   {
+      DB::beginTransaction();
       try {
           $pfes = new Pfe();
 
@@ -82,12 +84,15 @@ class PfeController extends Controller
 
           ]);
 
+          DB::commit(); // insert data
+
           toastr()->success('Les données ont été enregistrées avec succès');
 
           return redirect()->route('Pfe.index');
 
 
       }catch (\Exception $e){
+          DB::rollback();
           return redirect()->back()->withErrors(['error' => $e->getMessage()]);
       }
 
@@ -125,6 +130,8 @@ class PfeController extends Controller
    */
   public function update(Request $request)
   {
+
+
       try {
 
           $pfes=Pfe::findOrFail($request->id);
@@ -156,10 +163,19 @@ class PfeController extends Controller
    */
   public function destroy(Request $request)
   {
-       // Storage::disk('upload')->delete('storage/PFE/'.$request->Titre);
+      $filename = Pfe::findOrFail($request->id);
 
+//     $path = Storage::files('public');
+//
+
+                //dd($v->Titre);
+
+       // Storage::disk('upload')->deleteDirectory('/'.$request->Titre);
+      $path = 'PFE/'.$filename->Titre;
+      Storage:: disk('public')->deleteDirectory($path);
 
       $pfes=Pfe::findOrFail($request->id)->delete();
+
       toastr()->error('Les données ont été supprimées avec succès');
 
       return redirect()->route('Pfe.index');
@@ -168,7 +184,7 @@ class PfeController extends Controller
 
   public function DownloadFile($titre,$filename){
 
-     return response()->download(public_path('storage/PFE/'.$titre.'/'.$filename));
+     return response()->download(storage_path('app/public/PFE/'.$titre.'/'.$filename));
   }
 
 }

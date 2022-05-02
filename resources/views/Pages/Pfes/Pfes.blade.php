@@ -193,6 +193,7 @@
                                                         <button type="submit"
                                                                 class="btn btn-danger">Supprimer
                                                         </button>
+                                                        <input type="hidden" name="titre" value="{{$pfe->Titre}}">
                                                     </div>
                                                 </form>
                                             </div>

@@ -65,6 +65,15 @@
                                                 data-target="#delete{{$stage->id }}"
                                                 title="Supprimer"><i
                                                 class="fa fa-trash"></i></button>
+                                        <a class="btn btn-outline-info btn-sm"
+
+                                           @foreach($fl as $f)
+                                           @if($stage->id == $f->stage_id)
+
+                                           href="{{url('Download_stage')}}/{{$stage->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                            @endif
+                                            @endforeach
+                                        </a>
                                     </td>
                                 </tr>
 
@@ -85,7 +94,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- update -->
-                                                <form action="{{route('Stage.update','test')}}" method="post">
+                                                <form action="{{route('Stage.update','test')}}" method="post" enctype="multipart/form-data">
                                                     {{method_field('patch')}}
                                                     @csrf
                                                     <div class="row">
@@ -171,7 +180,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{route('Stage.destroy','test')}}" method="post">
+                                                <form action="{{route('Stage.destroy','test')}}" method="post" enctype="multipart/form-data">
                                                     {{method_field('Delete')}}
                                                     @csrf
                                                     êtes-vous sûr de vouloir supprimer ?
@@ -259,7 +268,7 @@
                                 <label for="résumé">Téléverser un fichier
                                     :</label>
                                 <br>
-                                <input  type="file" name="files" accept="application/pdf"   >
+                                <input  type="file" name="files" accept="application/pdf"  required >
                             </div>
                             <!--end input file-->
                             <br><br>
