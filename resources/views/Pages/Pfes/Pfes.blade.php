@@ -59,7 +59,7 @@
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#edit{{ $pfe->id }}"
+                                                data-target="#edit{{ $pfe->id}}"
                                                 title="Editer"><i class="fa fa-edit"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                 data-target="#delete{{$pfe->id }}"
@@ -71,8 +71,7 @@
                                                 @if($pfe->id == $f->pfe_id)
 
                                         href="{{url('Download_file')}}/{{$pfe->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
-                                            @endif
-                                            @endforeach
+
                                         </a>
                                     </td>
                                 </tr>
@@ -145,8 +144,29 @@
                                                                   id="exampleFormControlTextarea1"
                                                                   rows="3">{{$pfe->Resume}}</textarea>
                                                     </div>
+<!--
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <embed src="{{'/storage/app/public/PFE/'.$pfe->Titre.'/'.$f->file_name}}" type="application/pdf"   height="150px" width="100px"><br><br>
+                                                            <div class="form-group">
+                                                                <label for="academic_year">Files : <span class="text-danger">*</span></label>
+                                                                <input type="file" accept="application/pdf"  name="files" >
+                                                            </div>
 
+                                                        </div>
+                                                    </div>
+
+                                                  <input type="text" name="file" value="{{$f->file_name}}">
+-->
                                                     <br><br>
+
+
+
+
+
+
+
+
 
 
                                                     <div class="modal-footer">
@@ -193,6 +213,7 @@
                                                         <button type="submit"
                                                                 class="btn btn-danger">Supprimer
                                                         </button>
+
                                                         <input type="hidden" name="titre" value="{{$pfe->Titre}}">
                                                     </div>
                                                 </form>
@@ -200,6 +221,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            @endif
+                            @endforeach
                             @endforeach
                         </table>
                     </div>
