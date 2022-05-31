@@ -213,7 +213,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                            Ajouter un PFA
+                            Rchercher d'un mémoire
                         </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -225,7 +225,24 @@
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <label for="titre" class="mr-sm-2">Titre
+                                    <label for="Pfa" >PFA
+                                        :</label>
+                                    <input id="pfa" type="checkbox" name="ch1"  checked >
+                                </div>
+                                <div class="col">
+                                    <label for="Stage" >Stage
+                                        :</label>
+                                    <input type="checkbox"  name="ch2" checked>
+                                </div>
+                                <div class="col">
+                                    <label for="Pfe" >PFE
+                                        :</label>
+                                    <input id="pfe" type="checkbox" name="ch3"  checked>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="titre" >Titre
                                         :</label>
                                     <input id="titre" type="text" name="Titre" class="form-control">
                                 </div>

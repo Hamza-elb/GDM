@@ -264,7 +264,7 @@
                                 <div class="col">
                                     <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
                                         :</label>
-                                    <input id="réalisé-Par" type="text" name="Realise_par" class="form-control"
+                                    <input id="réalisé-Par" type="text" name="Realise_par" placeholder="NOM PRENOM1, NOM PRENOM2" class="form-control"
                                            required>
                                 </div>
                                 <div class="col">

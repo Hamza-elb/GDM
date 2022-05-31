@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pfa;
+use App\Models\Pfe;
+use App\Models\Stage;
 use Illuminate\Http\Request;
+use Spatie\Searchable\Search;
 
 class RechercheController extends Controller
 {
@@ -37,6 +40,8 @@ class RechercheController extends Controller
      */
     public function store(Request $request)
     {
+        $pfa=(new Search())->registerModel(Pfa::class,'Titre')->search($request->Titre );
+/*if($request->ch1){
 
         $pfa=Pfa::where('Titre','like',"%{$request->Titre}%")
             ->Where('Specialite','like',"%{$request->Specialite}%")
@@ -44,8 +49,35 @@ class RechercheController extends Controller
             ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
             ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
             ->get();
-        return view('Pages.Recherche',compact('pfa'));
+
+        //return view('Pages.Recherche',compact('pfa'));
     }
+if($request->ch2){
+            $pfe=Pfe::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+                ->get();
+
+            //return view('Pages.Recherche',compact('pfe'));
+    }
+if($request->ch3){
+            $stage=Stage::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+                ->get();
+
+            //return view('Pages.Recherche',compact('stage'));
+            }
+        return view('Pages.Recherche',compact('stage','pfa','pfe'));
+*/
+        return view('Pages.Recherche',compact('pfa'));
+
+    }
+
 
     /**
      * Display the specified resource.
