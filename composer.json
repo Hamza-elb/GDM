@@ -17,6 +17,7 @@
         "laravel/ui": "2.4",
         "livewire/livewire": "^2.10",
         "mcamara/laravel-localization": "^1.7",
+        "protonemedia/laravel-cross-eloquent-search": "^2.4",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
