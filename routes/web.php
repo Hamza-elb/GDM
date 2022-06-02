@@ -14,25 +14,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+//Auth::routes();
 
-Route::group([
-    'middleware' => ['guest']
-],function (){
-    Route::get('/', function(){
-        return View ('auth.login');
-    });
+//Route::group([
+//    'middleware' => ['guest']
+//],function (){
+//    Route::get('/', function(){
+//        return View ('auth.login');
+//    });
+//
+//});
+Route::get('/','HomeController@index')->name('selection');
+
+//==============================dashboard============================
+Route::get('/dashboard','HomeController@dashboard')->name('dashboard');
+
+Route::group(['namespace' => 'Auth'], function () {
+
+    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
+
+    Route::post('/login','LoginController@login')->name('login');
+
+    Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
+
 
 });
 
 
 
-    Route::group(
-        [
-            'middleware' => ['auth']
-        ], function (){
-
-      Route::get('/dashboard','HomeController@index')->name('dashboard');
       Route::resource('search', 'RechercheController');
 
 
@@ -64,7 +73,7 @@ Route::group([
 
 
 
-    });
+
 
 
 

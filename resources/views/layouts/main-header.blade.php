@@ -48,11 +48,17 @@ header start-->
                 <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
 
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Pramétres</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>Déconnecter</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
+                @if(auth('admin')->check())
+                    <form method="GET" action="{{ route('logout','admin') }}">
+                                        @else
+                                            <form method="GET" action="{{ route('logout','web') }}">
+                                                @endif
+
+                                                @csrf
+                                                <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>Lougout</a>
+                                            </form>
             </div>
         </li>
     </ul>

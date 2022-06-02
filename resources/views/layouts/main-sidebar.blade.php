@@ -54,6 +54,8 @@
 
                         </ul>
                     </li>
+
+                    <!-- Search-->
                     <li>
                         <a href="{{ route('search.index') }}">
                             <div class="pull-left"><i class="ti-search"></i><span class="right-nav-text">recherche</span>
@@ -61,6 +63,13 @@
                             <div class="clearfix"></div>
                         </a>
                     </li>
+
+                    <!-- Settings-->
+                    <li>
+                        <a href="#"><i class="fas fa-cogs"></i><span class="right-nav-text">Paramètres </span></a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
