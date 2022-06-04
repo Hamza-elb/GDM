@@ -56,13 +56,14 @@ login-->
                 </div>
                 <div class="col-lg-4 col-md-6 bg-white">
                     <div class="login-fancy pb-40 clearfix">
-                        @if($type == 'student')
-                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">Se connecter Etudiant</h3>
-                        @else
-                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">Se connecter Admin</h3>
-                        @endif
+                    @if($type== 'student')
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">Se connecter Student</h3>
+                    @elseif($type== 'admin')
 
-                        <form method="POST" action="{{ route('login') }}">
+                            <h3 style="font-family: 'Cairo', sans-serif" class="mb-30">Se connecter Admin</h3>
+                    @endif
+
+                        <form method="POST" action="{{route('login')}}">
                             @csrf
 
                             <div class="section-field mb-20">
@@ -70,6 +71,7 @@ login-->
                                 <input id="email" type="email"
                                        class="form-control @error('email') is-invalid @enderror" name="email"
                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                 <input type="hidden" name="type" value="{{$type}}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">

@@ -3,9 +3,11 @@ header start-->
 <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt=""></a>
-        <a class="navbar-brand brand-logo-mini" href="{{ url('/dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-dark.png') }}"
-                                                                                    alt=""></a>
+        <a class="navbar-brand brand-logo" href="{{ url('/student/dashboard') }}"><img
+                src="{{ URL::asset('assets/images/logo-dark.png') }}" alt=""></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ url('/student/dashboard') }}"><img
+                src="{{ URL::asset('assets/images/logo-icon-dark.png') }}"
+                alt=""></a>
 
 
     </div>
@@ -21,11 +23,9 @@ header start-->
     <ul class="nav navbar-nav ml-auto">
 
 
-
         <li class="nav-item fullscreen">
             <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
         </li>
-
 
 
         <li class="nav-item dropdown mr-30">
@@ -38,8 +38,11 @@ header start-->
                     <div class="media">
                         <div class="media-body">
                             <!-- add name and email -->
+
                             <h5 class="mt-0 mb-0">{{ Auth::user()->name }}</h5>
+
                             <span>{{ Auth::user()->email}}</span>
+
                         </div>
                     </div>
                 </div>
@@ -50,15 +53,20 @@ header start-->
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                @if(auth('admin')->check())
-                    <form method="GET" action="{{ route('logout','admin') }}">
+                @if(auth('web')->check())
+                    <form method="GET" action="{{ route('logout') }}">
+
                                         @else
-                                            <form method="GET" action="{{ route('logout','web') }}">
+                                            <form method="GET" action="{{ route('logout') }}">
                                                 @endif
 
                                                 @csrf
-                                                <a class="dropdown-item" href="#" onclick="event.preventDefault();this.closest('form').submit();"><i class="bx bx-log-out"></i>Lougout</a>
+                                                <a class="dropdown-item" href="#"
+                                                   onclick="event.preventDefault();this.closest('form').submit();"><i
+                                                        class="bx bx-log-out"></i>logout</a>
                                             </form>
+
+
             </div>
         </li>
     </ul>

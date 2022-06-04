@@ -11,48 +11,50 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
-   // use AuthenticatesUsers;
+    // use AuthenticatesUsers;
+
     use AuthTrait;
-
 
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function loginForm($type){
-
-        return view('auth.login',compact('type'));
-    }
-
     public function login(Request $request)
     {
 
-       if (Auth::guard($this->checkGurded($request))->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
-                return $this->redirect($request);
-            }
+      if(Auth::guard($this->checkGurded($request))->attempt(['email' => $request->email, 'password' => $request->password])){
+        return $this->redirectTo($request);
+      }
+
+
+
+
+
+    }
+    public function logout(Request $request){
+        if ($request->type == 'student') {
+            Auth::guard('student')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/');
+
+        } else {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/');
+        }
+
     }
 
-    public function logout(Request $request,$type)
-    {
-        Auth::guard($type)->logout();
 
-        $request->session()->invalidate();
+//    public function loginAdmin()
+//    {
+//        $type = 'admin';
+//        return view('auth.login', compact('type'));
+//    }
 
-        $request->session()->regenerateToken();
 
-        return redirect('/');
-    }
 
 }

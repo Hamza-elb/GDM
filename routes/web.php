@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,32 +15,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Auth::routes();
+    //Auth::routes();
 
-//Route::group([
-//    'middleware' => ['guest']
-//],function (){
-//    Route::get('/', function(){
-//        return View ('auth.login');
-//    });
-//
-//});
-Route::get('/','HomeController@index')->name('selection');
 
-//==============================dashboard============================
-Route::get('/dashboard','HomeController@dashboard')->name('dashboard');
+
+Route::get('/','HomeController@index')->name('home');
+Route::get('/admin','HomeController@admin');
 
 Route::group(['namespace' => 'Auth'], function () {
-
-    Route::get('/login/{type}','LoginController@loginForm')->middleware('guest')->name('login.show');
-
-    Route::post('/login','LoginController@login')->name('login');
-
-    Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
-
+//
+//    Route::get('/admin','LoginController@loginAdmin')->middleware('guest');
+//
+  Route::post('/login','LoginController@login')->name('login');
+    Route::get('/logout','LoginController@logout')->name('logout');
+//
+//
 
 });
+Route::get('/dashboard','HomeController@dashboard');
 
+
+
+
+
+
+//Route::get('/admin', 'HomeController@admin');
 
 
       Route::resource('search', 'RechercheController');

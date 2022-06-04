@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| student Routes
+| API Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -14,7 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//==============================dashboard============================
-Route::get('/student/dashboard', function () {
-    return view('pages.Students.dashboard');
+//==============================Translate all pages============================
+Route::group(
+    [
+
+        'middleware' => [ 'auth:student']
+    ], function () {
+
+    //==============================dashboard============================
+    Route::get('/student/dashboard', function () {
+        return view('Pages.Students.dashboard');
+    });
+
 });

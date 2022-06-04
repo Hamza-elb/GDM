@@ -8,14 +8,21 @@ use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
 {
-
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $guard
+     * @return mixed
+     */
     public function handle($request, Closure $next)
     {
-        if(auth('admin')->check()){
+        if (auth('web')->check()) {
             return redirect(RouteServiceProvider::HOME);
         }
 
-        if(auth('web')->check()){
+        if (auth('student')->check()) {
             return redirect(RouteServiceProvider::STUDENT);
         }
 
