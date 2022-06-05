@@ -16,6 +16,7 @@ class CreatePfasTable extends Migration {
 			$table->string('Encadre_par');
 			$table->longText('Mots_cle');
 			$table->longText('Resume');
+            $table->string('Type')->default('Pfa');
 		});
 	}
 

@@ -14,12 +14,16 @@ class Authenticate extends Middleware
             if (Request::is(app()->getLocale() . '/dashboard')) {
                 return route('home');
             }
-            if (Request::is(app()->getLocale() . '/student/dashboard')) {
-                return route('home');
-            }
+
+
+
+//            if (Request::is(app()->getLocale() . '/student/dashboard')) {
+//                return route('home');
+//            }
 
             else {
-                return route('home');
+
+                return route('student.dashboard');
             }
         }
     }

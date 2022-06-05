@@ -16,6 +16,7 @@ class CreateStagesTable extends Migration {
 			$table->string('Encadre_par', 50);
 			$table->longText('Mots_cle');
 			$table->longText('Resume');
+            $table->string('Type')->default('Stage');
 		});
 	}
 

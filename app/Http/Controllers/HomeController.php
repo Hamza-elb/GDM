@@ -12,11 +12,20 @@ class HomeController extends Controller
     public function index()
     {
         $type = 'student';
-        return view('auth.login',compact('type'));
+        if(Auth::guard($type)->check()){
+            return redirect()->route('student.dashboard');
+        }
+            return view('auth.login',compact('type'));
+
+
     }
     public function admin()
     {
         $type = 'admin';
+        if(Auth::guard('web')->check()){
+            return redirect()->route('dash');
+        }
+
         return view('auth.login',compact('type'));
     }
 
