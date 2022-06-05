@@ -68,7 +68,7 @@ login-->
 
                             <div class="section-field mb-20">
                                 <label class="mb-10" for="name">* Email</label>
-                                <input id="email" type="email"
+                                <input id="email" type="email"  dir="ltr"
                                        class="form-control @error('email') is-invalid @enderror" name="email"
                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
 
@@ -83,7 +83,7 @@ login-->
 
                             <div class="section-field mb-20">
                                 <label class="mb-10" for="Password">* Password </label>
-                                <input id="password" type="password"
+                                <input id="password" type="password"  dir="ltr"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="current-password">
 
@@ -96,9 +96,11 @@ login-->
                             </div>
                             <div class="section-field">
                                 <div class="remember-checkbox mb-30">
-
+                                    @if($type== 'student')
                                     <a href="/register" class="float-left" >Register</a>
+
                                     <a href="#" class="float-right">? Mot de passe oublié</a>
+                                    @endif
                                 </div>
                             </div>
                             <br><br><br>

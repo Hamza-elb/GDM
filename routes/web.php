@@ -17,10 +17,30 @@ use Illuminate\Support\Facades\Route;
 
     //Auth::routes();
 
+Route::group(
+    [
+
+        'middleware' => [ 'auth']
+    ], function () {
+
+    //==============================dashboard============================
 
 
-Route::get('/','HomeController@index')->name('home');
+    Route::get('/dashboard','HomeController@dashboard');
+
+
+});
+
 Route::get('/admin','HomeController@admin');
+Route::get('/','HomeController@index')->name('home');
+
+
+
+
+
+
+
+
 
 Route::group(['namespace' => 'Auth'], function () {
 //
@@ -28,12 +48,15 @@ Route::group(['namespace' => 'Auth'], function () {
 //
   Route::post('/login','LoginController@login')->name('login');
     Route::get('/logout','LoginController@logout')->name('logout');
+    Route::post('/reg','LoginController@register')->name('register');
 //
 //
 
 });
-Route::get('/dashboard','HomeController@dashboard');
 
+Route::get('/register',function(){
+    return view('auth.register');
+});
 
 
 

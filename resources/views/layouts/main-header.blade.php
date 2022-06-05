@@ -62,8 +62,7 @@ header start-->
 
                                                 @csrf
                                                 <a class="dropdown-item" href="#"
-                                                   onclick="event.preventDefault();this.closest('form').submit();"><i
-                                                        class="bx bx-log-out"></i>logout</a>
+                                                   onclick="event.preventDefault();this.closest('form').submit();"><i class="text-danger ti-unlock"></i>logout</a>
                                             </form>
 
 
