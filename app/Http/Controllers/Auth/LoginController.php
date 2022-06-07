@@ -68,7 +68,7 @@ class LoginController extends Controller
         $save = $student->save();
 
         if($save) {
-            return redirect('/student/dashboard');
+            return redirect('/');
         }else{
             return redirect()->back()->with('error', 'Erreur lors de l\'enregistrement');
         }
