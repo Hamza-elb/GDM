@@ -10,7 +10,7 @@
      <div class="page-title">
          <div class="row">
              <div class="col-sm-6">
-                 <h4 class="mb-0"> Résumé de  </h4>
+                 <h4 class="mb-0"> Résumé de {{$stage->Titre}} </h4>
              </div>
              <br><br>
          </div>

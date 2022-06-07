@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MemoiresView;
 use App\Models\Pfa;
 use App\Models\Pfe;
 use App\Models\Stage;
@@ -17,9 +18,11 @@ class RechercheController extends Controller
      */
     public function index()
     {
-        $pfa = Pfa::all();
 
+        $pfa = MemoiresView::latest()->take(5)->get();
         return view('Pages.Recherche',compact('pfa'));
+
+
     }
 
     /**
@@ -40,56 +43,87 @@ class RechercheController extends Controller
      */
     public function store(Request $request)
     {
-        $pfa=Search::add(Pfa::where('Titre','like',"%{$request->Titre}%")
-                ->Where('Specialite','like',"%{$request->Specialite}%")
-                ->Where('Realise_par','like',"%{$request->Realise_par}%")
-                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
-                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
-            ->add(Pfe::where('Titre','like',"%{$request->Titre}%")
-                ->Where('Specialite','like',"%{$request->Specialite}%")
-                ->Where('Realise_par','like',"%{$request->Realise_par}%")
-                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
-                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
-            ->add(Pfe::where('Titre','like',"%{$request->Titre}%")
-                ->Where('Specialite','like',"%{$request->Specialite}%")
-                ->Where('Realise_par','like',"%{$request->Realise_par}%")
-                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
-                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
-            ->search();
-/*if($request->ch1){
 
-        $pfa=Pfa::where('Titre','like',"%{$request->Titre}%")
+
+    if ($request->ch1 && $request->ch2 && $request->ch3){
+    $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+        ->Where('Specialite','like',"%{$request->Specialite}%")
+        ->Where('Realise_par','like',"%{$request->Realise_par}%")
+        ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+        ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+        ->get();
+
+        return view('Pages.Recherche',compact('pfa'));
+
+    }
+        elseif ($request->ch1 && $request->ch2){
+        $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+        ->Where('Specialite','like',"%{$request->Specialite}%")
+        ->Where('Realise_par','like',"%{$request->Realise_par}%")
+        ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+        ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+        ->Where('Type','!=',"Pfe")
+        ->get();
+
+        return view('Pages.Recherche',compact('pfa'));
+
+    }elseif($request->ch1 && $request->ch3){
+        $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+        ->Where('Specialite','like',"%{$request->Specialite}%")
+        ->Where('Realise_par','like',"%{$request->Realise_par}%")
+        ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+        ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+        ->Where('Type','!=',"Stage")
+        ->get();
+        return view('Pages.Recherche',compact('pfa'));
+
+    }elseif ($request->ch2 && $request->ch3){
+            $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
             ->Where('Specialite','like',"%{$request->Specialite}%")
             ->Where('Realise_par','like',"%{$request->Realise_par}%")
             ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
             ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+            ->Where('Type','!=',"Pfa")
             ->get();
 
-        //return view('Pages.Recherche',compact('pfa'));
-    }
-if($request->ch2){
-            $pfe=Pfe::where('Titre','like',"%{$request->Titre}%")
-                ->Where('Specialite','like',"%{$request->Specialite}%")
-                ->Where('Realise_par','like',"%{$request->Realise_par}%")
-                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
-                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
-                ->get();
-
-            //return view('Pages.Recherche',compact('pfe'));
-    }
-if($request->ch3){
-            $stage=Stage::where('Titre','like',"%{$request->Titre}%")
-                ->Where('Specialite','like',"%{$request->Specialite}%")
-                ->Where('Realise_par','like',"%{$request->Realise_par}%")
-                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
-                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
-                ->get();
-
-            //return view('Pages.Recherche',compact('stage'));
-            }
-        return view('Pages.Recherche',compact('stage','pfa','pfe'));
-*/
         return view('Pages.Recherche',compact('pfa'));
+
+    }elseif($request->ch1){
+
+        $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+            ->Where('Specialite','like',"%{$request->Specialite}%")
+            ->Where('Realise_par','like',"%{$request->Realise_par}%")
+            ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+            ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+            ->Where('Type','like',"Pfa")
+            ->get();
+
+        return view('Pages.Recherche',compact('pfa'));
+    }elseif($request->ch2){
+    $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+                ->Where('Type','like',"Stage")
+                ->get();
+            return view('Pages.Recherche',compact('pfa'));
+    } elseif($request->ch3){
+                $pfa=MemoiresView::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%")
+                ->Where('Type','like',"Pfe")
+                ->get();
+
+            return view('Pages.Recherche',compact('pfa'));
+            }else{
+        $pfa = MemoiresView::latest()->take(5)->get();
+        return view('Pages.Recherche',compact('pfa'));
+
+    }
+
 
     }
 

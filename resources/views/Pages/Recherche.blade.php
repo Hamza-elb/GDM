@@ -30,6 +30,7 @@
                                 <table style="text-align: center" class="table center-aligned-table table-hover mb-0">
                                     <thead>
                                     <tr class="table-info ">
+                                        <th>Type</th>
                                         <th>Titre</th>
                                         <th>Spécialite</th>
                                         <th>Réalisé Par</th>
@@ -48,14 +49,27 @@
                                         <tr>
                                             <?php $i++;  ?>
 
-                                            <td>{{$p->Titre}}</td>
+                                            <td>{{$p->Type}}</td>
+                                                <td>{{$p->Titre}}</td>
                                             <td>{{$p->Specialite}}</td>
                                             <td>{{$p->Realise_par}}</td>
                                             <td>{{$p->Encadre_par}}</td>
                                             <td>{{$p->Mots_cle}}</td>
                                             <td>
-                                                <a href="{{ url('/resume/'.$p->id) }}" type="button"
-                                                   class="btn btn-warning btn-sm">Résumé</a>
+
+
+
+                                                @if($p->Type=='Pfa')
+                                                    <a href="{{ route('Pfa.show', $p->id) }}" type="button"
+                                                       class="btn btn-warning btn-sm" >Résumé</a>
+                                                        @elseif($p->Type=='Stage')
+                                                    <a href="{{ route('Stage.show', $p->id) }}" type="button"
+                                                       class="btn btn-warning btn-sm" >Résumé</a>
+                                                                @else
+                                                    <a href="{{ route('Pfe.show', $p->id) }}" type="button"
+                                                       class="btn btn-warning btn-sm" >Résumé</a>
+                                                @endif
+
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -76,7 +90,7 @@
                                                         <h5 style="font-family: 'Cairo', sans-serif;"
                                                             class="modal-title"
                                                             id="exampleModalLabel">
-                                                            Modifications de pfa
+                                                            Modifications de {{$p->Type}}
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -85,8 +99,16 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <!-- update -->
+                                                        @if($p->Type=='Pfa')
                                                         <form action="{{route('Pfa.update','test')}}" method="post">
                                                             {{method_field('patch')}}
+                                                            @elseif($p->Type=='Stage')
+                                                                <form action="{{route('Stage.update','test')}}" method="post">
+                                                                    {{method_field('patch')}}
+                                                                    @else
+                                                                        <form action="{{route('Pfe.update','test')}}" method="post">
+                                                                            {{method_field('patch')}}
+                                                                            @endif
                                                             @csrf
                                                             <div class="row">
                                                                 <div class="col">
@@ -167,7 +189,7 @@
                                                     <div class="modal-header">
                                                         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                             id="exampleModalLabel">
-                                                            Supprimer un PFA
+                                                            Supprimer un {{$p->Type}}
                                                         </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -175,8 +197,19 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('Pfa.destroy','test')}}" method="post">
-                                                            {{method_field('Delete')}}
+
+                                                        @if($p->Type=='Pfa')
+                                                            <form action="{{route('Pfa.destroy','test')}}" method="post">
+                                                                {{method_field('Delete')}}
+                                                                @elseif($p->Type=='Stage')
+                                                                    <form action="{{route('Stage.destroy','test')}}" method="post">
+                                                                        {{method_field('Delete')}}
+                                                                        @else
+                                                                            <form action="{{route('Pfe.destroy','test')}}" method="post">
+                                                                                {{method_field('Delete')}}
+                                                                                @endif
+
+
                                                             @csrf
                                                             êtes-vous sûr de vouloir supprimer ?
                                                             <input id="id" type="hidden" name="id" class="form-control"
