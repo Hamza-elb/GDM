@@ -79,6 +79,43 @@
                                                         data-target="#delete{{$p->id }}"
                                                         title="Supprimer"><i
                                                         class="fa fa-trash"></i></button>
+
+
+                                                @if($p->Type=='Pfa')
+                                                    <a class="btn btn-outline-info btn-sm"
+
+                                                       @foreach($fl as $f)
+                                                       @if($p->id == $f->pfa_id)
+
+                                                       href="{{url('Download')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                        @endif
+                                                        @endforeach
+                                                    </a>
+                                                @elseif($p->Type=='Stage')
+                                                    <a class="btn btn-outline-info btn-sm"
+
+                                                       @foreach($fl2 as $f)
+                                                       @if($p->id == $f->stage_id)
+
+                                                       href="{{url('Download_stage')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                        @endif
+                                                        @endforeach
+                                                    </a>
+                                                @else
+                                                    <a class="btn btn-outline-info btn-sm"
+
+                                                       @foreach($fl3 as $f)
+                                                       @if($p->id == $f->pfe_id)
+
+                                                       href="{{url('Download_file')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                        @endif
+                                                        @endforeach
+                                                    </a>
+                                                @endif
+
+
+
+
                                             </td>
                                         </tr>
                                         <!-- edit_modal-->

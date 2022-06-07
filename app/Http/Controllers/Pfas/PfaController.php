@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Pfas;
 
 use App\Http\Requests\StorePfas;
 use App\Models\Rapport;
+use App\Models\RapportPfe;
+use App\Models\RapportStage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pfa;
@@ -24,7 +26,8 @@ class PfaController extends Controller
   public function index()
   {
       $pfas = Pfa::all();
-      $fl = Rapport::all();
+      $fl=Rapport::all();
+
     return view('Pages.Pfas.PfaList', compact('pfas','fl'));
   }
 
