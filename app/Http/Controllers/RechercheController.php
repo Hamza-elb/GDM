@@ -40,7 +40,22 @@ class RechercheController extends Controller
      */
     public function store(Request $request)
     {
-        $pfa=(new Search())->registerModel(Pfa::class,'Titre')->search($request->Titre );
+        $pfa=Search::add(Pfa::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
+            ->add(Pfe::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
+            ->add(Pfe::where('Titre','like',"%{$request->Titre}%")
+                ->Where('Specialite','like',"%{$request->Specialite}%")
+                ->Where('Realise_par','like',"%{$request->Realise_par}%")
+                ->Where('Encadre_par','like',"%{$request->Encadre_par}%")
+                ->Where('Mots_cle','like',"%{$request->Mots_cle}%"))
+            ->search();
 /*if($request->ch1){
 
         $pfa=Pfa::where('Titre','like',"%{$request->Titre}%")
