@@ -23,7 +23,10 @@ Route::group(
 
     //==============================dashboard============================
     Route::get('/student/dashboard', function () {
-        return view('Pages.Students.dashboard');
+        $data['rap1'] = \App\Models\Rapport::count();
+        $data['rap2'] = \App\Models\RapportPfe::count();
+        $data['rap3'] = \App\Models\RapportStage::count();
+        return view('Pages.Students.dashboard',$data);
     })->name('student.dashboard');
 
 });

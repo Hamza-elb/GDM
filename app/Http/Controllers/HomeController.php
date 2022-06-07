@@ -36,11 +36,7 @@ class HomeController extends Controller
         return view('dashboard');
     }
 
-    public function dashboard_student()
-    {
 
-        return view('empty');
-    }
 
 //    public function out(Request $request){
 //
