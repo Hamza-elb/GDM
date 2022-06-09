@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-    Liste des Pfa
+    Liste des Stages
 @stop
 @endsection
 @section('page-header')

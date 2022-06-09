@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Pfas;
 
+use App\Exports\PfasExport;
 use App\Http\Requests\StorePfas;
 use App\Models\Rapport;
 use App\Models\RapportPfe;
@@ -12,6 +13,10 @@ use App\Models\Pfa;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+
+
+
 
 class PfaController extends Controller
 {
@@ -180,6 +185,18 @@ class PfaController extends Controller
 
         return response()->download(storage_path('app/public/PFA/'.$titre.'/'.$filename));
     }
+
+
+    public function export()
+    {
+
+        return Excel::download(new PfasExport, 'pfas.xlsx');
+    }
+
+
+
+
+
 
 }
 

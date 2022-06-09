@@ -40,8 +40,7 @@ preloader -->
         <div class="page-title display-inline">
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="mb-0" style="font-family: 'Cairo', sans-serif;display:inline-block;">Dashboard
-                        Student</h4>
+                    <h4 class="mb-0" style="font-family: 'Cairo', sans-serif;display:inline-block;">Bienvenu {{auth()->user()->name}}</h4>
                     <button type="button" class="button x-small mb-2  float-right" data-toggle="modal"
                             data-target="#forma">
                         Rechecher

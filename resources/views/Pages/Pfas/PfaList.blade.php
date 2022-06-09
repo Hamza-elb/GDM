@@ -25,6 +25,11 @@
                     <button type="button" class="button x-small m-2" data-toggle="modal" data-target="#exampleModal">
                         Ajouter Pfa
                     </button>
+
+                    <a href="{{url('pfas/export')}}" type="button" class="button x-small m-2">
+                        Export Pfa
+                    </a>
+
                     <br><br>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
