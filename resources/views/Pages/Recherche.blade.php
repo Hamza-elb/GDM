@@ -14,6 +14,7 @@
 <!-- breadcrumb -->
 @endsection
 @section('content')
+
     <div class="row">
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
@@ -50,7 +51,7 @@
                                             <?php $i++;  ?>
 
                                             <td>{{$p->Type}}</td>
-                                                <td>{{$p->Titre}}</td>
+                                            <td>{{$p->Titre}}</td>
                                             <td>{{$p->Specialite}}</td>
                                             <td>{{$p->Realise_par}}</td>
                                             <td>{{$p->Encadre_par}}</td>
@@ -58,16 +59,15 @@
                                             <td>
 
 
-
                                                 @if($p->Type=='Pfa')
                                                     <a href="{{ route('Pfa.show', $p->id) }}" type="button"
-                                                       class="btn btn-warning btn-sm" >Résumé</a>
-                                                        @elseif($p->Type=='Stage')
+                                                       class="btn btn-warning btn-sm">Résumé</a>
+                                                @elseif($p->Type=='Stage')
                                                     <a href="{{ route('Stage.show', $p->id) }}" type="button"
-                                                       class="btn btn-warning btn-sm" >Résumé</a>
-                                                                @else
+                                                       class="btn btn-warning btn-sm">Résumé</a>
+                                                @else
                                                     <a href="{{ route('Pfe.show', $p->id) }}" type="button"
-                                                       class="btn btn-warning btn-sm" >Résumé</a>
+                                                       class="btn btn-warning btn-sm">Résumé</a>
                                                 @endif
 
                                             </td>
@@ -87,7 +87,8 @@
                                                        @foreach($fl as $f)
                                                        @if($p->id == $f->pfa_id)
 
-                                                       href="{{url('Download')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                       href="{{url('Download')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach
                                                     </a>
@@ -97,7 +98,8 @@
                                                        @foreach($fl2 as $f)
                                                        @if($p->id == $f->stage_id)
 
-                                                       href="{{url('Download_stage')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                       href="{{url('Download_stage')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach
                                                     </a>
@@ -107,13 +109,12 @@
                                                        @foreach($fl3 as $f)
                                                        @if($p->id == $f->pfe_id)
 
-                                                       href="{{url('Download_file')}}/{{$p->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                                       href="{{url('Download_file')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach
                                                     </a>
                                                 @endif
-
-
 
 
                                             </td>
@@ -137,82 +138,101 @@
                                                     <div class="modal-body">
                                                         <!-- update -->
                                                         @if($p->Type=='Pfa')
-                                                        <form action="{{route('Pfa.update','test')}}" method="post">
-                                                            {{method_field('patch')}}
-                                                            @elseif($p->Type=='Stage')
-                                                                <form action="{{route('Stage.update','test')}}" method="post">
-                                                                    {{method_field('patch')}}
-                                                                    @else
-                                                                        <form action="{{route('Pfe.update','test')}}" method="post">
-                                                                            {{method_field('patch')}}
-                                                                            @endif
-                                                            @csrf
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <label for="titre" class="mr-sm-2">Titre
-                                                                        :</label>
-                                                                    <input id="titre" type="text" name="Titre"
-                                                                           class="form-control" value="{{$p->Titre}}"
-                                                                           required>
+                                                            <form action="{{route('Pfa.update','test')}}" method="post">
+                                                                {{method_field('patch')}}
+                                                                @elseif($p->Type=='Stage')
+                                                                    <form action="{{route('Stage.update','test')}}"
+                                                                          method="post">
+                                                                        {{method_field('patch')}}
+                                                                        @else
+                                                                            <form
+                                                                                action="{{route('Pfe.update','test')}}"
+                                                                                method="post">
+                                                                                {{method_field('patch')}}
+                                                                                @endif
+                                                                                @csrf
+                                                                                <div class="row">
+                                                                                    <div class="col">
+                                                                                        <label for="titre"
+                                                                                               class="mr-sm-2">Titre
+                                                                                            :</label>
+                                                                                        <input id="titre" type="text"
+                                                                                               name="Titre"
+                                                                                               class="form-control"
+                                                                                               value="{{$p->Titre}}"
+                                                                                               required>
 
-                                                                    <input id="id" type="hidden" name="id"
-                                                                           class="form-control"
-                                                                           value="{{$p->id}}">
-                                                                </div>
-                                                                <div class="col">
-                                                                    <label for="spécialité" class="mr-sm-2">Spécialité
-                                                                        :</label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="Specialite"
-                                                                           value="{{$p->Specialite}}" required>
-                                                                </div>
+                                                                                        <input id="id" type="hidden"
+                                                                                               name="id"
+                                                                                               class="form-control"
+                                                                                               value="{{$p->id}}">
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="spécialité"
+                                                                                               class="mr-sm-2">Spécialité
+                                                                                            :</label>
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="Specialite"
+                                                                                               value="{{$p->Specialite}}"
+                                                                                               required>
+                                                                                    </div>
 
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
-                                                                        :</label>
-                                                                    <input id="réalisé-Par" type="text"
-                                                                           name="Realise_par"
-                                                                           class="form-control"
-                                                                           value="{{$p->Realise_par}}"
-                                                                           required>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <label for="Encadre_par" class="mr-sm-2">Encadré-Par
-                                                                        :</label>
-                                                                    <input type="text" class="form-control"
-                                                                           name="Encadre_par"
-                                                                           value="{{$p->Encadre_par}}" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="résumé">Mots Clés
-                                                                    :</label>
-                                                                <textarea class="form-control" name="Mots_cle"
-                                                                          id="exampleFormControlTextarea1"
-                                                                          rows="3">{{$p->Mots_cle}}</textarea>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="résumé">Résumé
-                                                                    :</label>
-                                                                <textarea class="form-control" name="Resume"
-                                                                          id="exampleFormControlTextarea1"
-                                                                          rows="3">{{$p->Resume}}</textarea>
-                                                            </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col">
+                                                                                        <label for="réalisé-Par"
+                                                                                               class="mr-sm-2">Réalisé-Par
+                                                                                            :</label>
+                                                                                        <input id="réalisé-Par"
+                                                                                               type="text"
+                                                                                               name="Realise_par"
+                                                                                               class="form-control"
+                                                                                               value="{{$p->Realise_par}}"
+                                                                                               required>
+                                                                                    </div>
+                                                                                    <div class="col">
+                                                                                        <label for="Encadre_par"
+                                                                                               class="mr-sm-2">Encadré-Par
+                                                                                            :</label>
+                                                                                        <input type="text"
+                                                                                               class="form-control"
+                                                                                               name="Encadre_par"
+                                                                                               value="{{$p->Encadre_par}}"
+                                                                                               required>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="résumé">Mots Clés
+                                                                                        :</label>
+                                                                                    <textarea class="form-control"
+                                                                                              name="Mots_cle"
+                                                                                              id="exampleFormControlTextarea1"
+                                                                                              rows="3">{{$p->Mots_cle}}</textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="résumé">Résumé
+                                                                                        :</label>
+                                                                                    <textarea class="form-control"
+                                                                                              name="Resume"
+                                                                                              id="exampleFormControlTextarea1"
+                                                                                              rows="3">{{$p->Resume}}</textarea>
+                                                                                </div>
 
-                                                            <br><br>
+                                                                                <br><br>
 
 
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Fermer
-                                                                </button>
-                                                                <button type="submit"
-                                                                        class="btn btn-success">Editer
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">Fermer
+                                                                                    </button>
+                                                                                    <button type="submit"
+                                                                                            class="btn btn-success">
+                                                                                        Editer
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
 
                                                     </div>
                                                 </div>
@@ -224,7 +244,8 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                                                        <h5 style="font-family: 'Cairo', sans-serif;"
+                                                            class="modal-title"
                                                             id="exampleModalLabel">
                                                             Supprimer un {{$p->Type}}
                                                         </h5>
@@ -236,30 +257,37 @@
                                                     <div class="modal-body">
 
                                                         @if($p->Type=='Pfa')
-                                                            <form action="{{route('Pfa.destroy','test')}}" method="post">
+                                                            <form action="{{route('Pfa.destroy','test')}}"
+                                                                  method="post">
                                                                 {{method_field('Delete')}}
                                                                 @elseif($p->Type=='Stage')
-                                                                    <form action="{{route('Stage.destroy','test')}}" method="post">
+                                                                    <form action="{{route('Stage.destroy','test')}}"
+                                                                          method="post">
                                                                         {{method_field('Delete')}}
                                                                         @else
-                                                                            <form action="{{route('Pfe.destroy','test')}}" method="post">
+                                                                            <form
+                                                                                action="{{route('Pfe.destroy','test')}}"
+                                                                                method="post">
                                                                                 {{method_field('Delete')}}
                                                                                 @endif
 
 
-                                                            @csrf
-                                                            êtes-vous sûr de vouloir supprimer ?
-                                                            <input id="id" type="hidden" name="id" class="form-control"
-                                                                   value="{{ $p->id }}">
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Annuler
-                                                                </button>
-                                                                <button type="submit"
-                                                                        class="btn btn-danger">Supprimer
-                                                                </button>
-                                                            </div>
-                                                        </form>
+                                                                                @csrf
+                                                                                êtes-vous sûr de vouloir supprimer ?
+                                                                                <input id="id" type="hidden" name="id"
+                                                                                       class="form-control"
+                                                                                       value="{{ $p->id }}">
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button"
+                                                                                            class="btn btn-secondary"
+                                                                                            data-dismiss="modal">Annuler
+                                                                                    </button>
+                                                                                    <button type="submit"
+                                                                                            class="btn btn-danger">
+                                                                                        Supprimer
+                                                                                    </button>
+                                                                                </div>
+                                                                            </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -295,24 +323,24 @@
                             @csrf
                             <div class="row">
                                 <div class="col">
-                                    <label for="Pfa" >PFA
+                                    <label for="Pfa">PFA
                                         :</label>
-                                    <input id="pfa" type="checkbox" name="ch1"  checked >
+                                    <input id="pfa" type="checkbox" name="ch1" checked>
                                 </div>
                                 <div class="col">
-                                    <label for="Stage" >Stage
+                                    <label for="Stage">Stage
                                         :</label>
-                                    <input type="checkbox"  name="ch2" checked>
+                                    <input type="checkbox" name="ch2" checked>
                                 </div>
                                 <div class="col">
-                                    <label for="Pfe" >PFE
+                                    <label for="Pfe">PFE
                                         :</label>
-                                    <input id="pfe" type="checkbox" name="ch3"  checked>
+                                    <input id="pfe" type="checkbox" name="ch3" checked>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="titre" >Titre
+                                    <label for="titre">Titre
                                         :</label>
                                     <input id="titre" type="text" name="Titre" class="form-control">
                                 </div>
