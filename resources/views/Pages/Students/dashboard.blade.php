@@ -285,71 +285,6 @@ preloader -->
                                             @endforelse
                                             </tbody>
                                         </table>
-                                        <!-- search -->
-                                        <form action="{{route('search.store')}}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="Pfa" >PFA
-                                                        :</label>
-                                                    <input id="pfa" type="checkbox" name="ch1"  checked >
-                                                </div>
-                                                <div class="col">
-                                                    <label for="Stage" >Stage
-                                                        :</label>
-                                                    <input type="checkbox"  name="ch2" checked>
-                                                </div>
-                                                <div class="col">
-                                                    <label for="Pfe" >PFE
-                                                        :</label>
-                                                    <input id="pfe" type="checkbox" name="ch3"  checked>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="titre" >Titre
-                                                        :</label>
-                                                    <input id="titre" type="text" name="Titre" class="form-control">
-                                                </div>
-                                                <div class="col">
-                                                    <label for="spécialité" class="mr-sm-2">Spécialité
-                                                        :</label>
-                                                    <input type="text" class="form-control" name="Specialite">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
-                                                        :</label>
-                                                    <input id="réalisé-Par" type="text" name="Realise_par" class="form-control"
-                                                    >
-                                                </div>
-                                                <div class="col">
-                                                    <label for="Encadre_par" class="mr-sm-2">Encadré-Par
-                                                        :</label>
-                                                    <input type="text" class="form-control" name="Encadre_par">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Mots_cle">Mots Clés
-                                                    :</label>
-                                                <textarea class="form-control" name="Mots_cle" id="exampleFormControlTextarea1"
-                                                          rows="3"></textarea>
-                                            </div>
-
-                                            <br/>
-                                            <br><br>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Fermer
-                                                </button>
-                                                <button type="submit" class="btn btn-success">Rechercher</button>
-                                            </div>
-
-                                        </form>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -399,13 +334,13 @@ preloader -->
 
 
                                                         @if($p->Type=='Pfa')
-                                                            <a href="{{ route('Pfa.show', $p->id) }}" type="button"
+                                                            <a href="{{ url('/resumePfa/'.$p->id) }}" type="button"
                                                                class="btn btn-warning btn-sm">Résumé</a>
                                                         @elseif($p->Type=='Stage')
-                                                            <a href="{{ route('Stage.show', $p->id) }}" type="button"
+                                                            <a href="{{ route('resumeStage', $p->id) }}" type="button"
                                                                class="btn btn-warning btn-sm">Résumé</a>
                                                         @else
-                                                            <a href="{{ route('Pfe.show', $p->id) }}" type="button"
+                                                            <a href="{{url('/resumePfe/'.$p->id)}}" type="button"
                                                                class="btn btn-warning btn-sm">Résumé</a>
                                                         @endif
 

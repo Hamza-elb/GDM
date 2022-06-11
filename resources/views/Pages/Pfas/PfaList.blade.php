@@ -76,7 +76,7 @@
                                            @foreach($fl as $f)
                                            @if($pfa->id == $f->pfa_id)
 
-                                           href="{{url('Download')}}/{{$pfa->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                           href="{{url('Download_file_pfa')}}/{{$pfa->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
                                             @endif
                                             @endforeach
                                         </a>

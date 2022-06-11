@@ -7,7 +7,7 @@ header start-->
 
 
     <!-- logo -->
-    @if(auth('student')->check()))
+    @if(auth('student')->check())
     <div class="text-left navbar-brand-wrapper">
         <a class="navbar-brand brand-logo" href="{{ url('/student/dashboard') }}"><img
                 src="{{ URL::asset('assets/images/logo-dark.png') }}" alt=""></a>

@@ -34,7 +34,7 @@
                 <p style="display: inline;font-size: large;font-family: Gill Sans, sans-serif;">
                     <b style="color: #011F26">Présenté par : </b>
 
-                    <span style="color: #011F26">{{$pfe->Realise_par}}</span>
+                    <span style="color: #011F26"> {{$pfe->Realise_par}}</span>
                 </p>
 
 

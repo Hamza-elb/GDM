@@ -25,6 +25,12 @@
                     <button type="button" class="button x-small m-2" data-toggle="modal" data-target="#exampleModal">
                         Ajouter Pfe
                     </button>
+
+                    <a href="{{url('pfes/export')}}" type="button" class="button x-small m-2">
+                        Export Pfe
+                    </a>
+
+
                     <br><br>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
@@ -50,7 +56,7 @@
 
                                     <td>{{$pfe->Titre}}</td>
                                     <td>{{$pfe->Specialite}}</td>
-                                    <td>{{$pfe->Realise_par}}</td>
+                                    <td>{{ str_replace("," , " && " , $pfe->Realise_par)}}</td>
                                     <td>{{$pfe->Encadre_par}}</td>
                                     <td>{{$pfe->Mots_cle}}</td>
                                     <td>
@@ -70,7 +76,7 @@
                                             @foreach($fl as $f)
                                                 @if($pfe->id == $f->pfe_id)
 
-                                        href="{{url('Download_file')}}/{{$pfe->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                        href="{{url('Download_file_pfe')}}/{{$pfe->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
 
                                         </a>
                                     </td>
@@ -264,7 +270,7 @@
                                 <div class="col">
                                     <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
                                         :</label>
-                                    <input id="réalisé-Par" type="text" name="Realise_par" placeholder="NOM PRENOM1, NOM PRENOM2" class="form-control"
+                                    <input id="réalisé-Par" type="text" name="Realise_par" placeholder="NOM1, NOM2" class="form-control"
                                            required>
                                 </div>
                                 <div class="col">

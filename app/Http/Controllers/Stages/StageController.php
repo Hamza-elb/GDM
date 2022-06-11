@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Stages;
 
+use App\Exports\StagesExport;
 use App\Models\RapportStage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,7 @@ use App\Models\Stage;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 use function App\Http\Controllers\Pfas\multiexplode;
 
 
@@ -168,6 +170,12 @@ class StageController extends Controller
     public function DownloadFile($titre,$filename){
 
         return response()->download(storage_path('app/public/Stage/'.$titre.'/'.$filename));
+    }
+
+    public function export()
+    {
+
+        return Excel::download(new StagesExport, 'stages.xlsx');
     }
 
 

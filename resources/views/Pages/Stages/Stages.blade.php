@@ -25,6 +25,14 @@
                     <button type="button" class="button x-small m-2" data-toggle="modal" data-target="#exampleModal">
                         Ajouter Stage
                     </button>
+
+                    <a href="{{url('stage/export')}}" type="button" class="button x-small m-2">
+                        Export Stage
+                    </a>
+
+
+
+
                     <br><br>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered p-0">
@@ -70,7 +78,7 @@
                                            @foreach($fl as $f)
                                            @if($stage->id == $f->stage_id)
 
-                                           href="{{url('Download_stage')}}/{{$stage->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
+                                           href="{{url('Download_file_stage')}}/{{$stage->Titre}}/{{$f->file_name}}" role="button"><i class="fas fa-download"></i>
                                             @endif
                                             @endforeach
                                         </a>

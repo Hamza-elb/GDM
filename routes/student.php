@@ -24,9 +24,7 @@ Route::group(
 
     //==============================dashboard============================
     Route::get('/student/dashboard', function () {
-        $data['rap1'] = \App\Models\Rapport::count();
-        $data['rap2'] = \App\Models\RapportPfe::count();
-        $data['rap3'] = \App\Models\RapportStage::count();
+
         $data['pfa']=null;
 
         return view('Pages.Students.dashboard',$data);
@@ -39,8 +37,8 @@ Route::group(
     Route::group([
         'namespace' => 'Pfas'
     ],function (){
-        Route::resource('Pfa', 'PfaController');
-        // Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+       // Route::resource('Pfa', 'PfaController');
+        Route::get('/resumePfa/{id}', 'PfaController@show')->name('resume');
         Route::get('Download/{titre}/{filename}','PfaController@DownloadFile')->name('Download');
 
         Route::get('pfas/export','PfaController@export');
@@ -50,15 +48,17 @@ Route::group(
     Route::group([
         'namespace' => 'Pfes'
     ],function (){
-        Route::resource('Pfe', 'PfeController');
-        // Route::get('/resume/{id}', 'PfeController@afficherOne')->name('resume');
+        //Route::resource('Pfe', 'PfeController');
+        Route::get('/resumePfe/{id}', 'PfeController@show')->name('resume_pfe');
         Route::get('Download_file/{titre}/{filename}','PfeController@DownloadFile')->name('Download_file');
     });
+
+
     Route::group([
         'namespace' => 'Stages'
     ],function (){
-        Route::resource('Stage', 'StageController');
-        //Route::get('/resume/{id}', 'StageController@afficherOne')->name('resume');
+        //Route::resource('Stage', 'StageController');
+        Route::get('/resume/{id}', 'StageController@show')->name('resumeStage');
         Route::get('Download_stage/{titre}/{filename}','StageController@DownloadFile')->name('Download_stage');
     });
 

@@ -87,7 +87,7 @@
                                                        @foreach($fl as $f)
                                                        @if($p->id == $f->pfa_id)
 
-                                                       href="{{url('Download')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       href="{{url('Download_file_pfa')}}/{{$p->Titre}}/{{$f->file_name}}"
                                                        role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach
@@ -98,7 +98,7 @@
                                                        @foreach($fl2 as $f)
                                                        @if($p->id == $f->stage_id)
 
-                                                       href="{{url('Download_stage')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       href="{{url('Download_file_stage')}}/{{$p->Titre}}/{{$f->file_name}}"
                                                        role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach
@@ -109,7 +109,7 @@
                                                        @foreach($fl3 as $f)
                                                        @if($p->id == $f->pfe_id)
 
-                                                       href="{{url('Download_file')}}/{{$p->Titre}}/{{$f->file_name}}"
+                                                       href="{{url('Download_file_pfe')}}/{{$p->Titre}}/{{$f->file_name}}"
                                                        role="button"><i class="fas fa-download"></i>
                                                         @endif
                                                         @endforeach

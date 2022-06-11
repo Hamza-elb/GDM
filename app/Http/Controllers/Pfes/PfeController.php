@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Pfes;
 
+use App\Exports\PfasExport;
+use App\Exports\PfesExport;
 use App\Interfaces\IPfe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class PfeController extends Controller
@@ -60,6 +63,15 @@ class PfeController extends Controller
 
         return $this->pfes->DownloadFile($titre, $filename);
     }
+
+    public function export()
+    {
+
+        return Excel::download(new PfesExport, 'pfes.xlsx');
+    }
+
+
+
 
 }
 

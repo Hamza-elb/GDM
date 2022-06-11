@@ -60,45 +60,47 @@ Route::get('/register',function(){
 
 
 
+Route::group(
+    [
+
+        'middleware' => [ 'auth' ],
+    ], function () {
+    Route::resource('search', 'RechercheController');
 
 
-//Route::get('/admin', 'HomeController@admin');
+    Route::group([
+        'namespace' => 'Pfas'
+    ], function () {
+        Route::resource('Pfa', 'PfaController');
+        // Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
+        Route::get('Download_file_pfa/{titre}/{filename}', 'PfaController@DownloadFile')->name('Download_file_pfa');
 
+        Route::get('pfas/export', 'PfaController@export');
 
-      Route::resource('search', 'RechercheController');
+    });
 
-
-
-
-            Route::group([
-                'namespace' => 'Pfas'
-            ],function (){
-                Route::resource('Pfa', 'PfaController');
-               // Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
-                Route::get('Download/{titre}/{filename}','PfaController@DownloadFile')->name('Download');
-
-                Route::get('pfas/export','PfaController@export');
-
-            });
-
-            Route::group([
-                'namespace' => 'Pfes'
-            ],function (){
-                Route::resource('Pfe', 'PfeController');
-               // Route::get('/resume/{id}', 'PfeController@afficherOne')->name('resume');
-                Route::get('Download_file/{titre}/{filename}','PfeController@DownloadFile')->name('Download_file');
-            });
-        Route::group([
-            'namespace' => 'Stages'
-        ],function (){
-            Route::resource('Stage', 'StageController');
-             //Route::get('/resume/{id}', 'StageController@afficherOne')->name('resume');
-            Route::get('Download_stage/{titre}/{filename}','StageController@DownloadFile')->name('Download_stage');
-        });
+    Route::group([
+        'namespace' => 'Pfes'
+    ], function () {
+        Route::resource('Pfe', 'PfeController');
+        // Route::get('/resume/{id}', 'PfeController@afficherOne')->name('resume');
+        Route::get('Download_file_pfe/{titre}/{filename}', 'PfeController@DownloadFile')->name('Download_file_pfe');
+        Route::get('pfes/export', 'PfeController@export');
 
 
 
+    });
+    Route::group([
+        'namespace' => 'Stages'
+    ], function () {
+        Route::resource('Stage', 'StageController');
+        //Route::get('/resume/{id}', 'StageController@afficherOne')->name('resume');
+        Route::get('Download_file_stage/{titre}/{filename}', 'StageController@DownloadFile')->name('Download_file_stage');
+        Route::get('stage/export', 'StageController@export');
+    });
 
+
+});
 
 
 

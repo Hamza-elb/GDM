@@ -35,7 +35,7 @@ class PfeImp implements IPfe
 
             $pfes->Titre = ucfirst($request->Titre);
             $pfes->Specialite = ucwords($request->Specialite);
-            $pfes->Realise_par = ucwords($request->Realise_par);
+            $pfes->Realise_par = ucwords(  implode(" \r ", $this->multiexplode("," , $request->Realise_par ) ));
             $pfes->Encadre_par = ucwords($request->Encadre_par);
             $pfes->Mots_cle =ucwords( implode(" ", $this->multiexplode(array(",", ".", "|", ":", "-", " ", ";"), $request->Mots_cle)));
             $pfes->Resume = $request->Resume;
