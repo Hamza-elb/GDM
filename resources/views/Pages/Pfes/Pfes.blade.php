@@ -56,7 +56,7 @@
 
                                     <td>{{$pfe->Titre}}</td>
                                     <td>{{$pfe->Specialite}}</td>
-                                    <td>{{ str_replace("," , " && " , $pfe->Realise_par)}}</td>
+                                    <td>{{$pfe->Realise_par}}</td>
                                     <td>{{$pfe->Encadre_par}}</td>
                                     <td>{{$pfe->Mots_cle}}</td>
                                     <td>
@@ -270,7 +270,7 @@
                                 <div class="col">
                                     <label for="réalisé-Par" class="mr-sm-2">Réalisé-Par
                                         :</label>
-                                    <input id="réalisé-Par" type="text" name="Realise_par" placeholder="NOM1, NOM2" class="form-control"
+                                    <input id="réalisé-Par" type="text" name="Realise_par" class="form-control"
                                            required>
                                 </div>
                                 <div class="col">
