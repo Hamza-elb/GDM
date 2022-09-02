@@ -41,5 +41,13 @@ class CreateMemoiresView extends Migration
             SQL;
     }
 
+    private function dropView(): string
+    {
+        return <<<SQL
 
+            DROP VIEW IF EXISTS memoiresView;
+
+SQL;
 }
+
+    }

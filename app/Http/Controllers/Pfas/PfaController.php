@@ -143,12 +143,15 @@ class PfaController extends Controller
           $pfas=Pfa::findOrFail($request->id);
           $pfas->update([
               $pfas->Titre = ucfirst($request->Titre),
-          $pfas->Specialite = ucwords($request->Specialite),
-          $pfas->Realise_par = ucwords($request->Realise_par),
-          $pfas->Encadre_par = ucwords($request->Encadre_par),
-          $pfas->Mots_cle =ucwords( implode(" ",multiexplode(array(",",".","|",":","-"," ",";") ,$request->Mots_cle))),
-          $pfas->Resume = $request->Resume
+              $pfas->Specialite = ucwords($request->Specialite),
+              $pfas->Realise_par = ucwords($request->Realise_par),
+              $pfas->Encadre_par = ucwords($request->Encadre_par),
+              $pfas->Mots_cle =ucwords( implode(" ",multiexplode(array(",",".","|",":","-"," ",";") ,$request->Mots_cle))),
+              $pfas->Resume = $request->Resume
           ]);
+
+          dd($pfas);
+
 
           toastr()->success('Les données ont été modifiées avec succès');
 

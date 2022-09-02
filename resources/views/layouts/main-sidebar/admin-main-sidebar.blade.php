@@ -13,7 +13,7 @@
         <!-- menu item PFA-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#elements">
-                <div class="pull-left"><i class="ti-palette"></i><span
+                <div class="pull-left"><i class="ti-files"></i><span
                         class="right-nav-text">PFA</span></div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
@@ -40,7 +40,7 @@
         <!-- menu item PFE-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
-                <div class="pull-left"><i class="ti-pie-chart"></i><span
+                <div class="pull-left"><i class="ti-folder"></i><span
                         class="right-nav-text">PFE</span></div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>

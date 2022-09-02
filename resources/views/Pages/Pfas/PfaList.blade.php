@@ -26,7 +26,7 @@
                         Ajouter Pfa
                     </button>
 
-                    <a href="{{url('pfas/export')}}" type="button" class="button x-small m-2">
+                    <a href="{{url('export')}}" type="button" class="button x-small m-2">
                         Export Pfa
                     </a>
 

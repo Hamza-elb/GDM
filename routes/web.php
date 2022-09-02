@@ -75,7 +75,7 @@ Route::group(
         // Route::get('/resume/{id}', 'PfaController@afficherOne')->name('resume');
         Route::get('Download_file_pfa/{titre}/{filename}', 'PfaController@DownloadFile')->name('Download_file_pfa');
 
-        Route::get('pfas/export', 'PfaController@export');
+        Route::get('export', 'PfaController@export');
 
     });
 
